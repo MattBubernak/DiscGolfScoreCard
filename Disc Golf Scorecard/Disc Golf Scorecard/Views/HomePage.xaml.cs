@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Diagnostics;
 
 namespace Disc_Golf_Scorecard.Views
 {
@@ -52,7 +53,18 @@ namespace Disc_Golf_Scorecard.Views
                     //add the button to the application bar 
                     ApplicationBar.Buttons.Add(newPlayer);
                     break;
+
                 case 2:
+                    //create a button for new player 
+                    ApplicationBarIconButton newCourse = new ApplicationBarIconButton();
+                    //populate the button information 
+                    newCourse.Text = "Add Player";
+                    newCourse.IconUri = new Uri("/Images/add.png", UriKind.Relative);
+                    newCourse.Click += new EventHandler(Add_Course);
+                    //add the button to the application bar 
+                    ApplicationBar.Buttons.Add(newCourse);
+                    break;
+                case 3:
                     break;
 
             }
@@ -60,6 +72,7 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Add_Scorecard(object sender, EventArgs e)
         {
+            Debug.WriteLine("what");
             NavigationService.Navigate(new Uri("/Views/NewScorecard.xaml", UriKind.Relative));
 
         }
@@ -67,6 +80,12 @@ namespace Disc_Golf_Scorecard.Views
         private void Add_Player(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/NewPlayer.xaml", UriKind.Relative));
+
+        }
+
+        private void Add_Course(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/NewCourse.xaml", UriKind.Relative));
 
         }
 
