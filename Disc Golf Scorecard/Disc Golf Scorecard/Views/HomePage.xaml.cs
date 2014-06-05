@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Diagnostics;
+using Disc_Golf_Scorecard.ViewModels;
 
 namespace Disc_Golf_Scorecard.Views
 {
@@ -17,6 +18,7 @@ namespace Disc_Golf_Scorecard.Views
         {
             InitializeComponent();
             UpdatePanoramaAppBar(0);
+            this.DataContext = HomePageViewModel.get_instance(); 
         }
 
         private void PanoramaSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -86,6 +88,11 @@ namespace Disc_Golf_Scorecard.Views
         private void Add_Course(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/NewCourse.xaml", UriKind.Relative));
+
+        }
+
+        private void PlayerSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
 

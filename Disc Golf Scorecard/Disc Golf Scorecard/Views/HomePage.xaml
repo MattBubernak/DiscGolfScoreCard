@@ -24,7 +24,17 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Players">
-                <Grid/>
+                <StackPanel>
+                    <phone:LongListSelector x:Name="PlayerLongListSelector" Margin="0,0,-12,85" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17">
+                                    <TextBlock Text="{Binding FullName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </StackPanel>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->

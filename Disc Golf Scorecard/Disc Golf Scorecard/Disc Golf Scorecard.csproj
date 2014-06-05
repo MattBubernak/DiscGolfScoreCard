@@ -116,6 +116,9 @@
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewCourse.xaml.cs">
+      <DependentUpon>NewCourse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewPlayer.xaml.cs">
       <DependentUpon>NewPlayer.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <SubType>Designer</SubType>
     </DesignData>
     <Page Include="Views\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

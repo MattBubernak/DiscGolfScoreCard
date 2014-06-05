@@ -8,12 +8,21 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Disc_Golf_Scorecard.Resources;
 using Disc_Golf_Scorecard.ViewModels;
+using Disc_Golf_Scorecard.Models;
+
+using System.IO.IsolatedStorage;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using System.Linq;
+
 
 namespace Disc_Golf_Scorecard
 {
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
+        public static DatabaseContext DB; 
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
@@ -73,6 +82,25 @@ namespace Disc_Golf_Scorecard
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+            // Specify the local database connection string.
+            string DBConnectionString = "Data Source=isostore:/Scorecard.sdf";
+
+            // Create the database if it does not exist.
+            using (DatabaseContext db = new DatabaseContext(DBConnectionString))
+            {
+                if (db.DatabaseExists() == false)
+                {
+                    // Create the local database.
+                    db.CreateDatabase();
+                    // Save categories to the database.
+                    db.SubmitChanges();
+                }
+
+            }
+            DB = new DatabaseContext(DBConnectionString);
+
+
         }
 
         // Code to execute when the application is launching (eg, from Start)
