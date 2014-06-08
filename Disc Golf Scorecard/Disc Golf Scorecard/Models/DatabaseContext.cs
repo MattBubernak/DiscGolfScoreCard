@@ -19,6 +19,8 @@ namespace Disc_Golf_Scorecard.Models
         // Specify a table for the to-do items.
         public Table<Player> Players;
         public Table<Scorecard> Scorecards;
+        public Table<Course> Courses;
+        public Table<Hole> Holes;
 
         #region player
         //player
@@ -255,7 +257,6 @@ namespace Disc_Golf_Scorecard.Models
         public class Course : INotifyPropertyChanged, INotifyPropertyChanging
         {
 
-
             // Define ID: private field, public property, and database column.
             private int _courseID;
 
@@ -274,7 +275,7 @@ namespace Disc_Golf_Scorecard.Models
                 }
             }
 
-
+            
             // Define the entity set for the collection side of the relationship.
             private EntitySet<Hole> _holes;
 
@@ -284,8 +285,50 @@ namespace Disc_Golf_Scorecard.Models
                 get { return this._holes; }
                 set { this._holes.Assign(value); }
             }
+            
 
 
+            // Assign handlers for the add and remove operations, respectively.
+        public Course()
+        {
+            _holes = new EntitySet<Hole>(
+                new Action<Hole>(this.attach_Instance),
+                new Action<Hole>(this.detach_Instance)
+                );
+        }
+
+        // Called during an add operation
+        private void attach_Instance(Hole hole)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            hole.Course = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(Hole hole)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            hole.Course = null;
+        }
+
+
+
+            private string _courseName;
+
+            [Column]
+            public string CourseName
+            {
+                get { return _courseName; }
+                set
+                {
+                    if (_courseName != value)
+                    {
+                        NotifyPropertyChanging("CourseName");
+                        _courseName = value;
+                        NotifyPropertyChanged("CourseName");
+                    }
+                }
+            }
 
 
 
@@ -334,7 +377,7 @@ namespace Disc_Golf_Scorecard.Models
         public class Hole : INotifyPropertyChanged, INotifyPropertyChanging
         {
 
-
+            public Hole() { }
             // Define ID: private field, public property, and database column.
             private int _holeID;
 
@@ -367,6 +410,24 @@ namespace Disc_Golf_Scorecard.Models
                         NotifyPropertyChanging("Par");
                         _par = value;
                         NotifyPropertyChanged("Par");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private int _holeNumber;
+
+            [Column]
+            public int HoleNumber
+            {
+                get { return _holeNumber; }
+                set
+                {
+                    if (_holeNumber != value)
+                    {
+                        NotifyPropertyChanging("HoleNumber");
+                        _holeNumber = value;
+                        NotifyPropertyChanged("HoleNumber");
                     }
                 }
             }

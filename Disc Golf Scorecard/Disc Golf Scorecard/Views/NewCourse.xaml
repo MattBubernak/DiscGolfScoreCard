@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -32,6 +33,34 @@
             <TextBox x:Name="CourseNameBox"></TextBox>
             <TextBlock Text="Number of Holes:"></TextBlock>
             <TextBlock Text="{Binding NumberOfHoles}"></TextBlock>
+            <!--
+            <ListBox Width="400" Margin="10"
+         ItemsSource="{Binding holes}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="nud"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            -->
+
+            <phone:LongListSelector  Margin="0,0,-12,85" ItemsSource="{Binding holes}" x:Name="HoleLongListSelector" SelectionChanged="HoleLongListSelector_SelectionChanged">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,0,0,17">
+                            <TextBlock Text="{Binding HoleNumber}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding ParString}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <Button Click="add">+</Button>
+                            <Button Click="subtract">-</Button>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+
         </StackPanel>
     </Grid>
 

@@ -1,25 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Disc_Golf_Scorecard.Models
+using Disc_Golf_Scorecard.Models;
+using System.Collections;
+using System.Diagnostics;
 
 namespace Disc_Golf_Scorecard.ViewModels
 {
-    class CourseViewModel : BaseViewModel
+    public class CourseViewModel : BaseViewModel
     {
-        public DatabaseContext.Course course; 
+        public DatabaseContext.Course course;
+        public ObservableCollection<HoleViewModel> holes { get; set; }
 
         public CourseViewModel(DatabaseContext.Course course)
         {
             this.course = course;
+            this.db = App.DB;
+            holes = new ObservableCollection<HoleViewModel>();
         }
+       
 
         public int NumberOfHoles
         {
-            //todo: return course.holes.count;
             get {return course.Holes.Count;}
+        }
+
+        public string CourseName
+        {
+            get { return course.CourseName; }
+        }
+
+        public string CourseInfo
+        {
+            get { return NumberOfHoles + " holes"; }
+        }
+
+        public void Create_Hole()
+        {
+            DatabaseContext.Hole newHole = new DatabaseContext.Hole { HoleNumber = course.Holes.Count, _linkedCourseID = course.CourseID };
+            db.Holes.InsertOnSubmit(newHole);
+            Debug.WriteLine(newHole.HoleNumber + "id: " + newHole.HoleID + "linked: " + newHole._linkedCourseID);
+            Debug.WriteLine(course.CourseID);
+            db.SubmitChanges();
+            course.Holes.Add(newHole);
+            holes.Add(new HoleViewModel(newHole));
+            NotifyPropertyChanged("NumberOfHoles");
         }
 
 

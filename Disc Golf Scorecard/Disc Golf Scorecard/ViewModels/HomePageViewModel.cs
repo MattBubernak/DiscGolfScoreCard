@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Disc_Golf_Scorecard.Models;
 using Disc_Golf_Scorecard.ViewModels;
+using System.Diagnostics;
 
 namespace Disc_Golf_Scorecard.ViewModels
 {
@@ -28,6 +29,8 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             db = App.DB;
             populate_players();
+            courses = new ObservableCollection<CourseViewModel>();
+
         }
 
         void populate_players()
@@ -42,6 +45,18 @@ namespace Disc_Golf_Scorecard.ViewModels
             db.SubmitChanges();
             players.Add(new PlayerViewModel(newPlayer));
             NotifyPropertyChanged("players");
+        }
+
+        //creates a new course, puts it in the DB, adds it to the course list, and returns the courseviewmodel
+        public CourseViewModel create_course()
+        {
+            DatabaseContext.Course newCourse = new DatabaseContext.Course {  };
+            
+            db.Courses.InsertOnSubmit(newCourse);
+            db.SubmitChanges();
+            courses.Add(new CourseViewModel(newCourse));
+            NotifyPropertyChanged("courses");
+            return courses[courses.Count-1];
         }
 
 

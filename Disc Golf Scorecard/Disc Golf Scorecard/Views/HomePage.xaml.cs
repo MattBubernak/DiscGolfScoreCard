@@ -87,7 +87,9 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Add_Course(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/NewCourse.xaml", UriKind.Relative));
+            CourseViewModel newCourse = HomePageViewModel.get_instance().create_course();
+            int index = HomePageViewModel.get_instance().courses.IndexOf(newCourse);
+            NavigationService.Navigate(new Uri("/Views/NewCourse.xaml?courseIndex=" + index, UriKind.Relative));
 
         }
 
@@ -100,10 +102,10 @@ namespace Disc_Golf_Scorecard.Views
 
         }
 
-        private void PlayerSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CourseSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CourseViewModel selectedCourse = CourseLongListSelector.SelectedItem as CourseViewModel;
-            NavigationService.Navigate(new Uri("/Views/CourseProfile.xaml?playerIndex=" + HomePageViewModel.get_instance().coursee.IndexOf(selectedCourse), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/CourseProfile.xaml?playerIndex=" + HomePageViewModel.get_instance().courses.IndexOf(selectedCourse), UriKind.Relative));
             CourseLongListSelector.SelectedItem = null;
 
         }
