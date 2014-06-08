@@ -27,9 +27,19 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock Text="Course Name"></TextBlock>
+            <TextBox x:Name="CourseNameBox"></TextBox>
+            <TextBlock Text="Number of Holes:"></TextBlock>
+            <TextBlock Text="{Binding NumberOfHoles}"></TextBlock>
+        </StackPanel>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Click="Add_Hole" IconUri="/Images/add.png" Text="Add Hole"/>
+            <shell:ApplicationBarIconButton Click="Save_Course" IconUri="/Images/save.png" Text="Save Course"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

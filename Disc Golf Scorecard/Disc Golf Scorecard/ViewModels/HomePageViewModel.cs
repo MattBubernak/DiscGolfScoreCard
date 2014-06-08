@@ -13,6 +13,7 @@ namespace Disc_Golf_Scorecard.ViewModels
     {
         private static HomePageViewModel _instance;
         public ObservableCollection<PlayerViewModel> players { get; set; }
+        public ObservableCollection<CourseViewModel> courses { get; set; }
 
         public static HomePageViewModel get_instance()
         {
@@ -33,6 +34,17 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             players = new ObservableCollection<PlayerViewModel>(from DatabaseContext.Player instance in db.Players select new PlayerViewModel(instance));
         }
+
+        public void add_player(string fname, string lname, string email, string phone)
+        {
+            DatabaseContext.Player newPlayer = new DatabaseContext.Player { FirstName = fname, LastName = lname, EmailAddress = email, PhoneNumber = phone };
+            db.Players.InsertOnSubmit(newPlayer);
+            db.SubmitChanges();
+            players.Add(new PlayerViewModel(newPlayer));
+            NotifyPropertyChanged("players");
+        }
+
+
 
     }
 }

@@ -22,5 +22,12 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return player.FirstName + " " + player.LastName; }
         }
 
+        public string PlayerInfo
+        {
+            get { return "0 rounds played" ; }
+        }
+
+        
+
     }
 }

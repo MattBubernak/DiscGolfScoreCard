@@ -27,9 +27,24 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
+        <StackPanel Margin="0,157,0,143" Grid.RowSpan="2">
+            <TextBlock Text="First Name"></TextBlock>
+            <TextBox x:Name="FirstNameBox"></TextBox>
+            <TextBlock Text="Last Name"></TextBlock>
+            <TextBox x:Name="LastNameBox"></TextBox>
+            <TextBlock Text="Email Address"></TextBlock>
+            <TextBox x:Name="EmailBox"></TextBox>
+            <TextBlock Text="Phone Number"></TextBlock>
+            <TextBox x:Name="PhoneNumberBox"></TextBox>
+            
+        </StackPanel>
     </Grid>
 
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Click="Save_Player" IconUri="/Images/save.png" Text="Save Player"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </phone:PhoneApplicationPage>

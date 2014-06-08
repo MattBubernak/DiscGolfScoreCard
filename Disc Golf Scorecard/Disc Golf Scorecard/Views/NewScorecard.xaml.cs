@@ -16,5 +16,15 @@ namespace Disc_Golf_Scorecard.Views
         {
             InitializeComponent();
         }
+
+        private void Save_Scorecard(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_new_player(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

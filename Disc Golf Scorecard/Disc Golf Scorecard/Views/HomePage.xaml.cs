@@ -93,6 +93,18 @@ namespace Disc_Golf_Scorecard.Views
 
         private void PlayerSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            PlayerViewModel selectedPlayer = PlayerLongListSelector.SelectedItem as PlayerViewModel;
+            NavigationService.Navigate(new Uri("/Views/PlayerProfile.xaml?playerIndex=" + HomePageViewModel.get_instance().players.IndexOf(selectedPlayer), UriKind.Relative));
+
+            PlayerLongListSelector.SelectedItem = null; 
+
+        }
+
+        private void PlayerSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CourseViewModel selectedCourse = CourseLongListSelector.SelectedItem as CourseViewModel;
+            NavigationService.Navigate(new Uri("/Views/CourseProfile.xaml?playerIndex=" + HomePageViewModel.get_instance().coursee.IndexOf(selectedCourse), UriKind.Relative));
+            CourseLongListSelector.SelectedItem = null;
 
         }
 
