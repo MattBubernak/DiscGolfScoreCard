@@ -30,7 +30,7 @@
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock Text="Course Name"></TextBlock>
-            <TextBox x:Name="CourseNameBox"></TextBox>
+            <TextBox x:Name="CourseNameBox" Text="{Binding CourseName}"></TextBox>
             <TextBlock Text="Number of Holes:"></TextBlock>
             <TextBlock Text="{Binding NumberOfHoles}"></TextBlock>
             <!--

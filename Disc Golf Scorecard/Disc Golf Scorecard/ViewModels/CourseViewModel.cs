@@ -19,7 +19,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             this.course = course;
             this.db = App.DB;
-            holes = new ObservableCollection<HoleViewModel>();
+            holes = new ObservableCollection<HoleViewModel>(from DatabaseContext.Hole instance in db.Holes select new HoleViewModel(instance));
         }
        
 
