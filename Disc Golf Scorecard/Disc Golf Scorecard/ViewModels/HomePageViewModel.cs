@@ -29,13 +29,18 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             db = App.DB;
             populate_players();
-            courses = new ObservableCollection<CourseViewModel>();
+            populate_courses(); 
 
         }
 
         void populate_players()
         {
             players = new ObservableCollection<PlayerViewModel>(from DatabaseContext.Player instance in db.Players select new PlayerViewModel(instance));
+        }
+
+        void populate_courses()
+        {
+            courses = new ObservableCollection<CourseViewModel>(from DatabaseContext.Course instance in db.Courses select new CourseViewModel(instance));
         }
 
         public void add_player(string fname, string lname, string email, string phone)

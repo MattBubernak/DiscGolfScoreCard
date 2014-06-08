@@ -44,6 +44,8 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Save_Course(object sender, EventArgs e)
         {
+            courseViewModel.update_in_db();
+            NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
 
         }
 
