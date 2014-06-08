@@ -25,7 +25,7 @@
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Players">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="PlayerLongListSelector" Margin="0,0,-12,85" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
+                    <phone:LongListSelector x:Name="PlayerLongListSelector" Height="430" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">
@@ -41,7 +41,7 @@
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Courses">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="CourseLongListSelector" Margin="0,0,-12,85" ItemsSource="{Binding courses}" SelectionChanged="CourseSelector_SelectionChanged">
+                    <phone:LongListSelector x:Name="CourseLongListSelector" Height="430" ItemsSource="{Binding courses}" SelectionChanged="CourseSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">

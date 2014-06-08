@@ -50,8 +50,10 @@ namespace Disc_Golf_Scorecard.ViewModels
             NotifyPropertyChanged("NumberOfHoles");
         }
 
-        public void update_in_db()
+        public void update_in_db(string CourseName)
         {
+            course.CourseName = CourseName;
+
             db.SubmitChanges();
         }
 
