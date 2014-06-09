@@ -15,7 +15,9 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+        <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -43,9 +45,9 @@
             <TextBlock Text="Date"></TextBlock>
             <toolkit:DatePicker x:Name="DateBox"></toolkit:DatePicker>
             <TextBlock Text="Description of Conditions"></TextBlock>
-            <TextBox x:Name="DescriptionBox" Height="139"></TextBox>
+            <TextBox TextWrapping="Wrap" x:Name="DescriptionBox" Height="139"></TextBox>
             <TextBlock Text="Players"></TextBlock>
-            <toolkit:ListPicker ItemsSource="{Binding players}" Name="PlayerSelection" VerticalAlignment="Top" Margin="10,20,76,0" >
+            <toolkit:ListPicker Name="PlayerSelection1" VerticalAlignment="Top" Margin="10,20,76,0" >
                 <toolkit:ListPicker.ItemTemplate >
                     <DataTemplate >
                         <TextBlock Text="{Binding FullName}"/>
@@ -58,8 +60,65 @@
 
                 </toolkit:ListPicker.FullModeItemTemplate>
             </toolkit:ListPicker>
-            
-            <Button x:Name="addPlayer" Click="add_new_player">+</Button>
+
+            <toolkit:ListPicker Visibility ="Collapsed" Name="PlayerSelection2" VerticalAlignment="Top" Margin="10,20,76,0" >
+                <toolkit:ListPicker.ItemTemplate >
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}" FontSize="28"/>
+                    </DataTemplate>
+
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+
+            <toolkit:ListPicker Visibility ="Collapsed" Name="PlayerSelection3" VerticalAlignment="Top" Margin="10,20,76,0" >
+                <toolkit:ListPicker.ItemTemplate >
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}" FontSize="28"/>
+                    </DataTemplate>
+
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+
+            <toolkit:ListPicker Visibility ="Collapsed" Name="PlayerSelection4" VerticalAlignment="Top" Margin="10,20,76,0" >
+                <toolkit:ListPicker.ItemTemplate >
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}" FontSize="28"/>
+                    </DataTemplate>
+
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+
+            <toolkit:ListPicker Visibility ="Collapsed" Name="PlayerSelection5" VerticalAlignment="Top" Margin="10,20,76,0" >
+                <toolkit:ListPicker.ItemTemplate >
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding FullName}" FontSize="28"/>
+                    </DataTemplate>
+
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+
+            <Button x:Name="addPlayer" Click="add_player">+</Button>
+            <Button x:Name="removePlayer" Click="remove_player">-</Button>
 
         </StackPanel>
 
@@ -68,6 +127,8 @@
 
         </Grid>
     </Grid>
+    </ScrollViewer>
+
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
