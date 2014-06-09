@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Disc_Golf_Scorecard.ViewModels;
 
 namespace Disc_Golf_Scorecard.Views
 {
@@ -15,6 +16,8 @@ namespace Disc_Golf_Scorecard.Views
         public NewScorecard()
         {
             InitializeComponent();
+            CourseSelection.ItemsSource = HomePageViewModel.get_instance().courses; 
+
         }
 
         private void Save_Scorecard(object sender, EventArgs e)

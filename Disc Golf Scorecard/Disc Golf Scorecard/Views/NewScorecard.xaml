@@ -26,13 +26,26 @@
             <TextBlock Text="Disc Golf Scorecard" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock Text="new scorecard" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
             <TextBlock Text="Course"></TextBlock>
-            <toolkit:ListPicker x:Name="CourseBox"></toolkit:ListPicker>
+            <toolkit:ListPicker x:Name="CourseSelection">
+                <toolkit:ListPicker.ItemTemplate >
+                    <DataTemplate >
+                        <TextBlock Text="{Binding CourseName}"/>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding CourseName}" FontSize="28"/>
+                    </DataTemplate>
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+
+
             <TextBlock Text="Date"></TextBlock>
             <toolkit:DatePicker x:Name="DateBox"></toolkit:DatePicker>
             <TextBlock Text="Description of Conditions"></TextBlock>
             <TextBox x:Name="DescriptionBox" Height="139"></TextBox>
             <TextBlock Text="Players"></TextBlock>
-            <toolkit:ListPicker ItemsSource="{Binding pladyers}" Name="PlayerSelection" VerticalAlignment="Top" Margin="10,20,76,0" >
+            <toolkit:ListPicker ItemsSource="{Binding players}" Name="PlayerSelection" VerticalAlignment="Top" Margin="10,20,76,0" >
                 <toolkit:ListPicker.ItemTemplate >
                     <DataTemplate >
                         <TextBlock Text="{Binding FullName}"/>
