@@ -13,7 +13,9 @@ namespace Disc_Golf_Scorecard.Views
 {
     public partial class NewScorecard : PhoneApplicationPage
     {
-        int playerCount = 1; 
+        int playerCount = 1;
+
+        public ScorecardViewModel scorecardViewModel = null; 
 
         public NewScorecard()
         {
@@ -23,14 +25,31 @@ namespace Disc_Golf_Scorecard.Views
             PlayerSelection2.ItemsSource = HomePageViewModel.get_instance().players;
             PlayerSelection3.ItemsSource = HomePageViewModel.get_instance().players;
             PlayerSelection4.ItemsSource = HomePageViewModel.get_instance().players;
-            PlayerSelection5.ItemsSource = HomePageViewModel.get_instance().players; 
+            PlayerSelection5.ItemsSource = HomePageViewModel.get_instance().players;
+            DataContext = null; 
 
 
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (DataContext == null)
+            {
+                string selectedIndex = "";
+                if (NavigationContext.QueryString.TryGetValue("scorecardIndex", out selectedIndex))
+                {
+                    int index = int.Parse(selectedIndex);
+                    DataContext = HomePageViewModel.get_instance().scorecards[index];
+                    scorecardViewModel = HomePageViewModel.get_instance().scorecards[index];
+                }
+            }
+        }
+
         private void Save_Scorecard(object sender, EventArgs e)
         {
-
+            scorecardViewModel.Update_Description(DescriptionBox.Text);
+            scorecardViewModel.Update_Course(CourseSelection.SelectedItem as CourseViewModel);
+            
         }
 
         private void add_player(object sender, RoutedEventArgs e)

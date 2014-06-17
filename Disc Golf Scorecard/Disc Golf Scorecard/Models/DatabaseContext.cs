@@ -21,6 +21,9 @@ namespace Disc_Golf_Scorecard.Models
         public Table<Scorecard> Scorecards;
         public Table<Course> Courses;
         public Table<Hole> Holes;
+        public Table<Shot> Shots;
+        public Table<ScorecardHole> ScorecardHoles;
+
 
         #region player
         //player
@@ -195,12 +198,51 @@ namespace Disc_Golf_Scorecard.Models
                     }
                 }
             }
+             
+            // Define the entity set for the collection side of the relationship.
+            private EntitySet<ScorecardHole> _scorecardHoles;
+
+            [Association(Storage = "_scorecardHoles", OtherKey = "_linkedScorecardID", ThisKey = "ScorecardID")]
+            public EntitySet<ScorecardHole> ScorecardHoles
+            {
+                get { return this._scorecardHoles; }
+                set { this._scorecardHoles.Assign(value); }
+            }
+
+            
+
+
+            // Assign handlers for the add and remove operations, respectively.
+        public Scorecard()
+        {
+            _scorecardHoles = new EntitySet<ScorecardHole>(
+                new Action<ScorecardHole>(this.attach_Instance),
+                new Action<ScorecardHole>(this.detach_Instance)
+                );
+        }
+
+        // Called during an add operation
+        private void attach_Instance(ScorecardHole hole)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            hole.ParentScorecard = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(ScorecardHole hole)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            hole.ParentScorecard = null;
+        }
+
+
+           
 
             // Define item name: private field, public property, and database column.
-            private DateTime _scorecardDescription;
+            private String _scorecardDescription;
 
             [Column]
-            public DateTime ScorecardDescription
+            public String ScorecardDescription
             {
                 get { return _scorecardDescription; }
                 set
@@ -213,6 +255,9 @@ namespace Disc_Golf_Scorecard.Models
                     }
                 }
             }
+
+           
+            
 
 
             // Version column aids update performance.
@@ -285,6 +330,7 @@ namespace Disc_Golf_Scorecard.Models
                 get { return this._holes; }
                 set { this._holes.Assign(value); }
             }
+
             
 
 
@@ -498,7 +544,281 @@ namespace Disc_Golf_Scorecard.Models
         }
         #endregion
 
+        #region ScorecardHole
+        [Table]
+        public class ScorecardHole : INotifyPropertyChanged, INotifyPropertyChanging
+        {
 
+            public ScorecardHole() { }
+            public ScorecardHole(Hole hole)
+            {
+                this._holeNumber = hole.HoleNumber;
+                this._par = hole.Par;
+               
+            }
+            // Define ID: private field, public property, and database column.
+            private int _scorecardHoleID;
+
+            [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
+            public int ScorecardHoleID
+            {
+                get { return _scorecardHoleID; }
+                set
+                {
+                    if (_scorecardHoleID != value)
+                    {
+                        NotifyPropertyChanging("ScorecardHoleID");
+                        _scorecardHoleID = value;
+                        NotifyPropertyChanged("ScorecardHoleID");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private int _par;
+
+            [Column]
+            public int Par
+            {
+                get { return _par; }
+                set
+                {
+                    if (_par != value)
+                    {
+                        NotifyPropertyChanging("Par");
+                        _par = value;
+                        NotifyPropertyChanged("Par");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private int _holeNumber;
+
+            [Column]
+            public int HoleNumber
+            {
+                get { return _holeNumber; }
+                set
+                {
+                    if (_holeNumber != value)
+                    {
+                        NotifyPropertyChanging("HoleNumber");
+                        _holeNumber = value;
+                        NotifyPropertyChanged("HoleNumber");
+                    }
+                }
+            }
+
+
+            [Column]
+            internal int _linkedScorecardID;
+
+            // Entity reference
+            private EntityRef<Scorecard> _parentScorecard;
+
+            // Association, to describe the relationship between this key and that "storage" table
+            [Association(Storage = "_parentScorecard", ThisKey = "_linkedScorecardID", OtherKey = "ScorecardID", IsForeignKey = true)]
+            public Scorecard ParentScorecard
+            {
+                get { return _parentScorecard.Entity; }
+                set
+                {
+                    NotifyPropertyChanging("ParentScorecard");
+                    _parentScorecard.Entity = value;
+
+                    if (value != null)
+                    {
+                        _linkedScorecardID = value.ScorecardID;
+                    }
+
+                    NotifyPropertyChanging("ParentScorecard");
+                }
+            }
+
+
+
+
+
+            // Version column aids update performance.
+            [Column(IsVersion = true)]
+            private Binary _version;
+
+            #region INotifyPropertyChanged Members
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            // Used to notify that a property changed
+            private void NotifyPropertyChanged(string propertyName)
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                }
+            }
+
+            #endregion
+
+            #region INotifyPropertyChanging Members
+
+            public event PropertyChangingEventHandler PropertyChanging;
+
+            // Used to notify that a property is about to change
+            private void NotifyPropertyChanging(string propertyName)
+            {
+                if (PropertyChanging != null)
+                {
+                    PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+                }
+            }
+
+            #endregion
+        }
+        #endregion
+
+        #region Shot
+        [Table]
+        public class Shot : INotifyPropertyChanged, INotifyPropertyChanging
+        {
+
+            public Shot() { }
+            // Define ID: private field, public property, and database column.
+            private int _shotID;
+
+            [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
+            public int ShotID
+            {
+                get { return _shotID; }
+                set
+                {
+                    if (_shotID != value)
+                    {
+                        NotifyPropertyChanging("ShotID");
+                        _shotID = value;
+                        NotifyPropertyChanged("ShotID");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private int _par;
+
+            [Column]
+            public int Par
+            {
+                get { return _par; }
+                set
+                {
+                    if (_par != value)
+                    {
+                        NotifyPropertyChanging("Par");
+                        _par = value;
+                        NotifyPropertyChanged("Par");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private int _score;
+
+            [Column]
+            public int Score
+            {
+                get { return _score; }
+                set
+                {
+                    if (_score != value)
+                    {
+                        NotifyPropertyChanging("Score");
+                        _score = value;
+                        NotifyPropertyChanged("Score");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private int _holeNumber;
+
+            [Column]
+            public int HoleNumber
+            {
+                get { return _holeNumber; }
+                set
+                {
+                    if (_holeNumber != value)
+                    {
+                        NotifyPropertyChanging("HoleNumber");
+                        _holeNumber = value;
+                        NotifyPropertyChanged("HoleNumber");
+                    }
+                }
+            }
+
+
+            [Column]
+            internal int _linkedScorecardHole;
+
+            // Entity reference
+            private EntityRef<ScorecardHole> _parentScorecardHole;
+
+            // Association, to describe the relationship between this key and that "storage" table
+            [Association(Storage = "_parentScorecardHole", ThisKey = "_linkedScorecardHole", OtherKey = "ScorecardHoleID", IsForeignKey = true)]
+            public ScorecardHole parentScorecardHole
+            {
+                get { return _parentScorecardHole.Entity; }
+                set
+                {
+                    NotifyPropertyChanging("parentScorecardHole");
+                    _parentScorecardHole.Entity = value;
+
+                    if (value != null)
+                    {
+                        _linkedScorecardHole = value.ScorecardHoleID;
+                    }
+
+                    NotifyPropertyChanging("parentScorecardHole");
+                }
+            }
+
+
+
+
+
+            // Version column aids update performance.
+            [Column(IsVersion = true)]
+            private Binary _version;
+
+            #region INotifyPropertyChanged Members
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            // Used to notify that a property changed
+            private void NotifyPropertyChanged(string propertyName)
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                }
+            }
+
+            #endregion
+
+            #region INotifyPropertyChanging Members
+
+            public event PropertyChangingEventHandler PropertyChanging;
+
+            // Used to notify that a property is about to change
+            private void NotifyPropertyChanging(string propertyName)
+            {
+                if (PropertyChanging != null)
+                {
+                    PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+                }
+            }
+
+            #endregion
+        }
+        #endregion
 
 
 

@@ -15,6 +15,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         private static HomePageViewModel _instance;
         public ObservableCollection<PlayerViewModel> players { get; set; }
         public ObservableCollection<CourseViewModel> courses { get; set; }
+        public ObservableCollection<ScorecardViewModel> scorecards { get; set; }
 
         public static HomePageViewModel get_instance()
         {
@@ -29,7 +30,8 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             db = App.DB;
             populate_players();
-            populate_courses(); 
+            populate_courses();
+            populate_scorecards(); 
 
         }
 
@@ -41,6 +43,10 @@ namespace Disc_Golf_Scorecard.ViewModels
         void populate_courses()
         {
             courses = new ObservableCollection<CourseViewModel>(from DatabaseContext.Course instance in db.Courses select new CourseViewModel(instance));
+        }
+        void populate_scorecards()
+        {
+            scorecards = new ObservableCollection<ScorecardViewModel>(from DatabaseContext.Scorecard instance in db.Scorecards select new ScorecardViewModel(instance));
         }
 
         public void add_player(string fname, string lname, string email, string phone)
@@ -56,12 +62,21 @@ namespace Disc_Golf_Scorecard.ViewModels
         public CourseViewModel create_course()
         {
             DatabaseContext.Course newCourse = new DatabaseContext.Course {  };
-            
             db.Courses.InsertOnSubmit(newCourse);
             db.SubmitChanges();
             courses.Add(new CourseViewModel(newCourse));
             NotifyPropertyChanged("courses");
             return courses[courses.Count-1];
+        }
+
+        public ScorecardViewModel create_scorecard()
+        {
+            DatabaseContext.Scorecard newScorecard = new DatabaseContext.Scorecard {ScorecardDate = DateTime.Now };
+            db.Scorecards.InsertOnSubmit(newScorecard);
+            db.SubmitChanges();
+            scorecards.Add(new ScorecardViewModel(newScorecard));
+            NotifyPropertyChanged("scorecards");
+            return scorecards[scorecards.Count - 1];
         }
 
 

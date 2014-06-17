@@ -53,7 +53,6 @@ namespace Disc_Golf_Scorecard.ViewModels
         public void update_in_db(string CourseName)
         {
             course.CourseName = CourseName;
-
             db.SubmitChanges();
         }
 

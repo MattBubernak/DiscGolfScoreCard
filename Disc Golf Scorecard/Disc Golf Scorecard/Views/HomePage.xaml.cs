@@ -74,8 +74,9 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Add_Scorecard(object sender, EventArgs e)
         {
-            Debug.WriteLine("what");
-            NavigationService.Navigate(new Uri("/Views/NewScorecard.xaml", UriKind.Relative));
+            ScorecardViewModel newScorecard = HomePageViewModel.get_instance().create_scorecard();
+            int index = HomePageViewModel.get_instance().scorecards.IndexOf(newScorecard);
+            NavigationService.Navigate(new Uri("/Views/NewScorecard.xaml?scorecardIndex=" + index, UriKind.Relative));
 
         }
 
@@ -109,6 +110,8 @@ namespace Disc_Golf_Scorecard.Views
             CourseLongListSelector.SelectedItem = null;
 
         }
+
+
 
 
     }
