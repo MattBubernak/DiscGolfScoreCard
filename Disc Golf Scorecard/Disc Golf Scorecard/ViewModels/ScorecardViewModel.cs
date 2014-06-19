@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Disc_Golf_Scorecard.Models;
 using System.Collections;
 using System.Diagnostics;
-using Disc_Golf_Scorecard.Models;
+
 using Disc_Golf_Scorecard.ViewModels;
 
 namespace Disc_Golf_Scorecard.ViewModels
@@ -19,7 +19,8 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public ScorecardViewModel(DatabaseContext.Scorecard scorecard)
         {
-            this.scorecard = scorecard; 
+            this.scorecard = scorecard;
+            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>(); 
         }
         public void Update_Description(string Description)
         {
@@ -34,6 +35,12 @@ namespace Disc_Golf_Scorecard.ViewModels
                 scorecardHoles.Add(new ScorecardHoleViewModel(newScorecardHole)); 
             }
         }
+
+        public string ScorecardName
+        {
+            get { return "nud"; }
+        }
+
 
 
     }

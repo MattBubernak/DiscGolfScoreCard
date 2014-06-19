@@ -23,6 +23,7 @@ namespace Disc_Golf_Scorecard.Models
         public Table<Hole> Holes;
         public Table<Shot> Shots;
         public Table<ScorecardHole> ScorecardHoles;
+        public Table<PlayerRound> PlayerRounds; 
 
 
         #region player
@@ -120,6 +121,44 @@ namespace Disc_Golf_Scorecard.Models
             }
 
 
+              // Define the entity set for the collection side of the relationship.
+            private EntitySet<PlayerRound> _playerRounds;
+
+            [Association(Storage = "_playerRounds", OtherKey = "_linkedPlayerID", ThisKey = "PlayerID")]
+            public EntitySet<PlayerRound> PlayerRounds
+            {
+                get { return this._playerRounds; }
+                set { this._playerRounds.Assign(value); }
+            }
+
+            
+
+
+            // Assign handlers for the add and remove operations, respectively.
+        public Player()
+        {
+            _playerRounds = new EntitySet<PlayerRound>(
+                new Action<PlayerRound>(this.attach_Instance),
+                new Action<PlayerRound>(this.detach_Instance)
+                );
+        }
+
+        // Called during an add operation
+        private void attach_Instance(PlayerRound playerRound)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            playerRound.Player = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(PlayerRound playerRound)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            playerRound.Player = null;
+        }
+
+
+
 
             // Version column aids update performance.
             [Column(IsVersion = true)]
@@ -156,6 +195,171 @@ namespace Disc_Golf_Scorecard.Models
             #endregion
         }
 #endregion 
+
+        #region playerround
+        //player
+        [Table]
+        public class PlayerRound : INotifyPropertyChanged, INotifyPropertyChanging
+        {
+
+
+            // Define ID: private field, public property, and database column.
+            private int _playerRoundID;
+
+            [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
+            public int PlayerRoundID
+            {
+                get { return _playerRoundID; }
+                set
+                {
+                    if (_playerRoundID != value)
+                    {
+                        NotifyPropertyChanging("PlayerRoundID");
+                        _playerRoundID = value;
+                        NotifyPropertyChanged("PlayerRoundID");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
+            private string _firstName;
+
+            [Column]
+            public string FirstName
+            {
+                get { return _firstName; }
+                set
+                {
+                    if (_firstName != value)
+                    {
+                        NotifyPropertyChanging("FirstName");
+                        _firstName = value;
+                        NotifyPropertyChanged("FirstName");
+                    }
+                }
+            }
+
+            private string _lastName;
+
+            [Column]
+            public string LastName
+            {
+                get { return _lastName; }
+                set
+                {
+                    if (_lastName != value)
+                    {
+                        NotifyPropertyChanging("LastName");
+                        _lastName = value;
+                        NotifyPropertyChanged("LastName");
+                    }
+                }
+            }
+
+
+            [Column]
+            internal int _linkedPlayerID;
+
+            // Entity reference
+            private EntityRef<Player> _player;
+
+            // Association, to describe the relationship between this key and that "storage" table
+            [Association(Storage = "_player", ThisKey = "_linkedPlayerID", OtherKey = "PlayerID", IsForeignKey = true)]
+            public Player Player
+            {
+                get { return _player.Entity; }
+                set
+                {
+                    NotifyPropertyChanging("Player");
+                    _player.Entity = value;
+
+                    if (value != null)
+                    {
+                        _linkedPlayerID = value.PlayerID;
+                    }
+
+                    NotifyPropertyChanging("Player");
+                }
+            }
+
+            
+            // Define the entity set for the collection side of the relationship.
+            private EntitySet<Shot> _shots;
+
+            [Association(Storage = "_shots", OtherKey = "_linkedPlayerRoundID", ThisKey = "PlayerRoundID")]
+            public EntitySet<Shot> Shots
+            {
+                get { return this._shots; }
+                set { this._shots.Assign(value); }
+            }
+
+            
+
+
+            // Assign handlers for the add and remove operations, respectively.
+        public PlayerRound()
+        {
+            _shots = new EntitySet<Shot>(
+                new Action<Shot>(this.attach_Instance),
+                new Action<Shot>(this.detach_Instance)
+                );
+        }
+
+        // Called during an add operation
+        private void attach_Instance(Shot shot)
+        {
+            NotifyPropertyChanging("PlayerRound");
+            shot.PlayerRound = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(Shot shot)
+        {
+            NotifyPropertyChanging("PlayerRound");
+            shot.PlayerRound = null;
+        }
+
+      
+
+
+
+            // Version column aids update performance.
+            [Column(IsVersion = true)]
+            private Binary _version;
+
+            #region INotifyPropertyChanged Members
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            // Used to notify that a property changed
+            private void NotifyPropertyChanged(string propertyName)
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                }
+            }
+
+            #endregion
+
+            #region INotifyPropertyChanging Members
+
+            public event PropertyChangingEventHandler PropertyChanging;
+
+            // Used to notify that a property is about to change
+            private void NotifyPropertyChanging(string propertyName)
+            {
+                if (PropertyChanging != null)
+                {
+                    PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+                }
+            }
+
+            #endregion
+        }
+        #endregion 
+
+
 
         #region Scorecard
         [Table]
@@ -549,7 +753,6 @@ namespace Disc_Golf_Scorecard.Models
         public class ScorecardHole : INotifyPropertyChanged, INotifyPropertyChanging
         {
 
-            public ScorecardHole() { }
             public ScorecardHole(Hole hole)
             {
                 this._holeNumber = hole.HoleNumber;
@@ -635,6 +838,44 @@ namespace Disc_Golf_Scorecard.Models
                     NotifyPropertyChanging("ParentScorecard");
                 }
             }
+
+
+              // Define the entity set for the collection side of the relationship.
+            private EntitySet<Shot> _shots;
+
+            [Association(Storage = "_shots", OtherKey = "_linkedScorecardHoleID", ThisKey = "ScorecardHoleID")]
+            public EntitySet<Shot> Shots
+            {
+                get { return this._shots; }
+                set { this._shots.Assign(value); }
+            }
+
+            
+
+
+            // Assign handlers for the add and remove operations, respectively.
+        public ScorecardHole()
+        {
+            _shots = new EntitySet<Shot>(
+                new Action<Shot>(this.attach_Instance),
+                new Action<Shot>(this.detach_Instance)
+                );
+        }
+
+        // Called during an add operation
+        private void attach_Instance(Shot shot)
+        {
+            NotifyPropertyChanging("PlayerRound");
+            shot.parentScorecardHole = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(Shot shot)
+        {
+            NotifyPropertyChanging("PlayerRound");
+            shot.parentScorecardHole = null;
+        }
+
 
 
 
@@ -756,13 +997,13 @@ namespace Disc_Golf_Scorecard.Models
 
 
             [Column]
-            internal int _linkedScorecardHole;
+            internal int _linkedScorecardHoleID;
 
             // Entity reference
             private EntityRef<ScorecardHole> _parentScorecardHole;
 
             // Association, to describe the relationship between this key and that "storage" table
-            [Association(Storage = "_parentScorecardHole", ThisKey = "_linkedScorecardHole", OtherKey = "ScorecardHoleID", IsForeignKey = true)]
+            [Association(Storage = "_parentScorecardHole", ThisKey = "_linkedScorecardHoleID", OtherKey = "ScorecardHoleID", IsForeignKey = true)]
             public ScorecardHole parentScorecardHole
             {
                 get { return _parentScorecardHole.Entity; }
@@ -773,14 +1014,37 @@ namespace Disc_Golf_Scorecard.Models
 
                     if (value != null)
                     {
-                        _linkedScorecardHole = value.ScorecardHoleID;
+                        _linkedScorecardHoleID = value.ScorecardHoleID;
                     }
 
                     NotifyPropertyChanging("parentScorecardHole");
                 }
             }
 
+            [Column]
+            internal int _linkedPlayerRoundID;
 
+            // Entity reference
+            private EntityRef<PlayerRound> _playerRound;
+
+            // Association, to describe the relationship between this key and that "storage" table
+            [Association(Storage = "_playerRound", ThisKey = "_linkedPlayerRoundID", OtherKey = "PlayerRoundID", IsForeignKey = true)]
+            public PlayerRound PlayerRound
+            {
+                get { return _playerRound.Entity; }
+                set
+                {
+                    NotifyPropertyChanging("PlayerRound");
+                    _playerRound.Entity = value;
+
+                    if (value != null)
+                    {
+                        _linkedPlayerRoundID = value.PlayerRoundID;
+                    }
+
+                    NotifyPropertyChanging("PlayerRound");
+                }
+            }
 
 
 

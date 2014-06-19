@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Disc_Golf_Scorecard.Models;
 using System.Collections;
 using System.Diagnostics;
-using Disc_Golf_Scorecard.Models;
 using Disc_Golf_Scorecard.ViewModels;
 
 namespace Disc_Golf_Scorecard.ViewModels
@@ -18,6 +17,16 @@ namespace Disc_Golf_Scorecard.ViewModels
         public ScorecardHoleViewModel(DatabaseContext.ScorecardHole hole)
         {
             this.scorecardHole = hole; 
+        }
+
+        public int Par
+        {
+            get { return scorecardHole.Par; }
+        }
+
+        public int HoleNumber
+        {
+            get { return scorecardHole.HoleNumber; }
         }
     }
 }
