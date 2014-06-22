@@ -22,9 +22,9 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             this.db = App.DB;
             this.scorecard = scorecard;
-            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>();
-            playerRoundViewModels = new ObservableCollection<PlayerRoundViewModel>();
-            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>(); 
+
+            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>(from DatabaseContext.ScorecardHole scorecardHole in db.ScorecardHoles select new ScorecardHoleViewModel(scorecardHole));
+            playerRoundViewModels = new ObservableCollection<PlayerRoundViewModel>(from DatabaseContext.PlayerRound playerRound in db.PlayerRounds select new PlayerRoundViewModel(playerRound));
         }
         public void Update_Description(string Description)
         {
@@ -81,7 +81,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public string ScorecardInfo
         {
-            get { return scorecard.PlayerRounds.Count + " players, played on " + scorecard.ScorecardDate.ToString(); }
+            get { return " played on " + scorecard.ScorecardDate.ToString(); }
         }
         public string Name
         {

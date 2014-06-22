@@ -18,8 +18,10 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public ScorecardHoleViewModel(DatabaseContext.ScorecardHole hole)
         {
+            this.db = App.DB;
+
             this.scorecardHole = hole;
-            this.shots = new ObservableCollection<ShotViewModel>(); 
+            shots = new ObservableCollection<ShotViewModel>(from DatabaseContext.Shot shot in db.Shots select new ShotViewModel(shot));
         }
 
         public int Par

@@ -201,7 +201,10 @@ namespace Disc_Golf_Scorecard.Models
         [Table]
         public class PlayerRound : INotifyPropertyChanged, INotifyPropertyChanging
         {
+            public PlayerRound()
+            {
 
+            }
 
             // Define ID: private field, public property, and database column.
             private int _playerRoundID;
