@@ -21,7 +21,8 @@ namespace Disc_Golf_Scorecard.ViewModels
         public ScorecardViewModel(DatabaseContext.Scorecard scorecard)
         {
             this.scorecard = scorecard;
-            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>(); 
+            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>();
+            playerRoundViewModels = new ObservableCollection<PlayerRoundViewModel>(); 
         }
         public void Update_Description(string Description)
         {
