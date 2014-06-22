@@ -282,6 +282,32 @@ namespace Disc_Golf_Scorecard.Models
                 }
             }
 
+            [Column]
+            internal int _linkedScorecardID;
+
+            // Entity reference
+            private EntityRef<Scorecard> _scorecard;
+
+            // Association, to describe the relationship between this key and that "storage" table
+            [Association(Storage = "_scorecard", ThisKey = "_linkedScorecardID", OtherKey = "ScorecardID", IsForeignKey = true)]
+            public Scorecard Scorecard
+            {
+                get { return _scorecard.Entity; }
+                set
+                {
+                    NotifyPropertyChanging("Scorecard");
+                    _scorecard.Entity = value;
+
+                    if (value != null)
+                    {
+                        _linkedScorecardID = value.ScorecardID;
+                    }
+
+                    NotifyPropertyChanging("Scorecard");
+                }
+            }
+
+
             
             // Define the entity set for the collection side of the relationship.
             private EntitySet<Shot> _shots;
@@ -297,12 +323,15 @@ namespace Disc_Golf_Scorecard.Models
 
 
             // Assign handlers for the add and remove operations, respectively.
-        public PlayerRound()
+        public PlayerRound(Player player)
         {
             _shots = new EntitySet<Shot>(
                 new Action<Shot>(this.attach_Instance),
                 new Action<Shot>(this.detach_Instance)
                 );
+            this.Player = player;
+            this._linkedPlayerID = player.PlayerID; 
+           
         }
 
         // Called during an add operation
@@ -413,6 +442,16 @@ namespace Disc_Golf_Scorecard.Models
                 set { this._scorecardHoles.Assign(value); }
             }
 
+            private EntitySet<PlayerRound> _playerRounds;
+
+            [Association(Storage = "_playerRounds", OtherKey = "_linkedScorecardID", ThisKey = "ScorecardID")]
+            public EntitySet<PlayerRound> PlayerRounds
+            {
+                get { return this._playerRounds; }
+                set { this._playerRounds.Assign(value); }
+            }
+
+
             
 
 
@@ -422,6 +461,10 @@ namespace Disc_Golf_Scorecard.Models
             _scorecardHoles = new EntitySet<ScorecardHole>(
                 new Action<ScorecardHole>(this.attach_Instance),
                 new Action<ScorecardHole>(this.detach_Instance)
+                );
+            _playerRounds = new EntitySet<PlayerRound>(
+                new Action<PlayerRound>(this.attach_Instance),
+                new Action<PlayerRound>(this.detach_Instance)
                 );
         }
 
@@ -437,6 +480,20 @@ namespace Disc_Golf_Scorecard.Models
         {
             NotifyPropertyChanging("ExerciseInstance");
             hole.ParentScorecard = null;
+        }
+
+        // Called during an add operation
+        private void attach_Instance(PlayerRound playerRound)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            //playerRound.p = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(PlayerRound playerRound)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            //playerRound.ParentScorecard = null;
         }
 
 

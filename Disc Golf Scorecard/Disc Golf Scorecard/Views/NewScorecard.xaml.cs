@@ -49,6 +49,27 @@ namespace Disc_Golf_Scorecard.Views
         {
             scorecardViewModel.Update_Description(DescriptionBox.Text);
             scorecardViewModel.Update_Course(CourseSelection.SelectedItem as CourseViewModel);
+            if (PlayerSelection1.Visibility == System.Windows.Visibility.Visible)
+            {
+                scorecardViewModel.Update_Player(PlayerSelection1.SelectedItem as PlayerViewModel);
+            }
+            if (PlayerSelection2.Visibility == System.Windows.Visibility.Visible)
+            {
+                scorecardViewModel.Update_Player(PlayerSelection2.SelectedItem as PlayerViewModel );
+            }
+            if (PlayerSelection3.Visibility == System.Windows.Visibility.Visible)
+            {
+                scorecardViewModel.Update_Player(PlayerSelection3.SelectedItem as PlayerViewModel);
+            }
+            if (PlayerSelection4.Visibility == System.Windows.Visibility.Visible)
+            {
+                scorecardViewModel.Update_Player(PlayerSelection4.SelectedItem as PlayerViewModel);
+            }
+            if (PlayerSelection5.Visibility == System.Windows.Visibility.Visible)
+            {
+                scorecardViewModel.Update_Player(PlayerSelection5.SelectedItem as PlayerViewModel);
+            }
+        
             int index = HomePageViewModel.get_instance().scorecards.IndexOf(scorecardViewModel);
             NavigationService.Navigate(new Uri("/Views/Scorecard.xaml?scorecardIndex=" + index, UriKind.Relative));
 

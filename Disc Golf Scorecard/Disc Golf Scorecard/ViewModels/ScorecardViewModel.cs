@@ -16,7 +16,8 @@ namespace Disc_Golf_Scorecard.ViewModels
     {
         public DatabaseContext.Scorecard scorecard { get; set; }
         public ObservableCollection<ScorecardHoleViewModel> scorecardHoles { get; set; }
-
+        public ObservableCollection<PlayerRoundViewModel> playerRoundViewModels { get; set; }
+        
         public ScorecardViewModel(DatabaseContext.Scorecard scorecard)
         {
             this.scorecard = scorecard;
@@ -34,6 +35,13 @@ namespace Disc_Golf_Scorecard.ViewModels
                 scorecard.ScorecardHoles.Add(newScorecardHole);
                 scorecardHoles.Add(new ScorecardHoleViewModel(newScorecardHole)); 
             }
+        }
+
+        public void Update_Player(PlayerViewModel playerViewModel)
+        {
+            DatabaseContext.PlayerRound newPlayerRound = new DatabaseContext.PlayerRound(playerViewModel.player);
+            scorecard.PlayerRounds.Add(newPlayerRound);
+            playerRoundViewModels.Add(new PlayerRoundViewModel(newPlayerRound)); 
         }
 
         public string ScorecardName
