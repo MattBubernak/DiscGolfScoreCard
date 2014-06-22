@@ -16,5 +16,10 @@ namespace Disc_Golf_Scorecard.ViewModels
             this.shot = shot; 
         }
 
+        public string PlayerName
+        {
+            get { return shot.PlayerRound.Player.FirstName + " " + shot.PlayerRound.Player.LastName ; }
+        }
+
     }
 }

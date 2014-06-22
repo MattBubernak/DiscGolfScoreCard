@@ -26,7 +26,22 @@
             </phone:Pivot.HeaderTemplate>
             <phone:Pivot.ItemTemplate>
                 <DataTemplate>
-                    <ContentControl Content="{Binding Par}" />
+                    <!--<ContentControl Content="{Binding Par}" />-->
+                    <StackPanel>
+                        <TextBlock Text="Par"></TextBlock>
+                        <TextBlock Text="{Binding Par}"></TextBlock>
+                        <phone:LongListSelector  Height="420" ItemsSource="{Binding shots}" x:Name="HoleLongListSelector" >
+                            <phone:LongListSelector.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,17">
+                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                     
+                                    </StackPanel>
+                                </DataTemplate>
+                            </phone:LongListSelector.ItemTemplate>
+                        </phone:LongListSelector>
+                        
+                    </StackPanel>
                 </DataTemplate>
             </phone:Pivot.ItemTemplate>
         </phone:Pivot>

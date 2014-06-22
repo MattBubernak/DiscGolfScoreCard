@@ -814,6 +814,10 @@ namespace Disc_Golf_Scorecard.Models
             {
                 this._holeNumber = hole.HoleNumber;
                 this._par = hole.Par;
+                _shots = new EntitySet<Shot>(
+                new Action<Shot>(this.attach_Instance),
+                new Action<Shot>(this.detach_Instance)
+                );
                
             }
             // Define ID: private field, public property, and database column.

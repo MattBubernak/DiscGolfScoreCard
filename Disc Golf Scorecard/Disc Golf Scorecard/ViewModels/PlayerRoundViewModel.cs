@@ -22,5 +22,9 @@ namespace Disc_Golf_Scorecard.ViewModels
             this.playerRound = playerRound; 
         }
 
+        public string Name
+        {
+            get { return playerRound.Player.FirstName; }
+        }
     }
 }

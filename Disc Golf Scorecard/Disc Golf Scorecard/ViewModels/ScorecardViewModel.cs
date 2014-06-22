@@ -20,9 +20,11 @@ namespace Disc_Golf_Scorecard.ViewModels
         
         public ScorecardViewModel(DatabaseContext.Scorecard scorecard)
         {
+            this.db = App.DB;
             this.scorecard = scorecard;
             scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>();
-            playerRoundViewModels = new ObservableCollection<PlayerRoundViewModel>(); 
+            playerRoundViewModels = new ObservableCollection<PlayerRoundViewModel>();
+            scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>(); 
         }
         public void Update_Description(string Description)
         {
@@ -34,6 +36,11 @@ namespace Disc_Golf_Scorecard.ViewModels
             {
                 DatabaseContext.ScorecardHole newScorecardHole = new DatabaseContext.ScorecardHole(hole); 
                 scorecard.ScorecardHoles.Add(newScorecardHole);
+                newScorecardHole._linkedScorecardID = scorecard.ScorecardID;
+                newScorecardHole.ParentScorecard = scorecard;
+
+                db.ScorecardHoles.InsertOnSubmit(newScorecardHole); 
+                db.SubmitChanges(); 
                 scorecardHoles.Add(new ScorecardHoleViewModel(newScorecardHole)); 
             }
         }
@@ -42,7 +49,32 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             DatabaseContext.PlayerRound newPlayerRound = new DatabaseContext.PlayerRound(playerViewModel.player);
             scorecard.PlayerRounds.Add(newPlayerRound);
+            db.PlayerRounds.InsertOnSubmit(newPlayerRound); 
+            db.SubmitChanges();
             playerRoundViewModels.Add(new PlayerRoundViewModel(newPlayerRound)); 
+        }
+
+        public void Create_Shots()
+        {
+            foreach (ScorecardHoleViewModel hole in scorecardHoles)
+            {
+                foreach (PlayerRoundViewModel playerRound in playerRoundViewModels)
+                {
+                    DatabaseContext.Shot newShot = new DatabaseContext.Shot();
+                    newShot._linkedPlayerRoundID = playerRound.playerRound.PlayerRoundID;
+                    newShot._linkedScorecardHoleID = scorecard.ScorecardID;
+                    newShot.HoleNumber = hole.HoleNumber;
+                    newShot.Par = hole.Par;
+                    newShot.parentScorecardHole = hole.scorecardHole;
+                    newShot.PlayerRound = playerRound.playerRound;
+
+                    db.Shots.InsertOnSubmit(newShot);
+                    db.SubmitChanges();
+                    ShotViewModel newShotViewModel = new ShotViewModel(newShot);
+                    playerRound.shots.Add(newShotViewModel);
+                    hole.shots.Add(newShotViewModel);
+                }
+            }
         }
 
         public string ScorecardName
