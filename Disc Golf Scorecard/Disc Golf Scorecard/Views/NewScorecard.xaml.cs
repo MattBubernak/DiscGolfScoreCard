@@ -69,7 +69,7 @@ namespace Disc_Golf_Scorecard.Views
             {
                 scorecardViewModel.Update_Player(PlayerSelection5.SelectedItem as PlayerViewModel);
             }
-        
+            scorecardViewModel.Create_Shots(); 
             int index = HomePageViewModel.get_instance().scorecards.IndexOf(scorecardViewModel);
             NavigationService.Navigate(new Uri("/Views/Scorecard.xaml?scorecardIndex=" + index, UriKind.Relative));
 

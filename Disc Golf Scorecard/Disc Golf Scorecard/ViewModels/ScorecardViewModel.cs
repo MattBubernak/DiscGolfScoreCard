@@ -49,6 +49,8 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             DatabaseContext.PlayerRound newPlayerRound = new DatabaseContext.PlayerRound(playerViewModel.player);
             scorecard.PlayerRounds.Add(newPlayerRound);
+            newPlayerRound._linkedPlayerID = playerViewModel.player.PlayerID;
+            newPlayerRound._linkedScorecardID = scorecard.ScorecardID; 
             db.PlayerRounds.InsertOnSubmit(newPlayerRound); 
             db.SubmitChanges();
             playerRoundViewModels.Add(new PlayerRoundViewModel(newPlayerRound)); 
@@ -77,11 +79,14 @@ namespace Disc_Golf_Scorecard.ViewModels
             }
         }
 
-        public string ScorecardName
+        public string ScorecardInfo
         {
-            get { return "nud"; }
+            get { return scorecard.PlayerRounds.Count + " players, played on " + scorecard.ScorecardDate.ToString(); }
         }
-
+        public string Name
+        {
+            get { return "scorecard name"; }
+        }
 
 
     }

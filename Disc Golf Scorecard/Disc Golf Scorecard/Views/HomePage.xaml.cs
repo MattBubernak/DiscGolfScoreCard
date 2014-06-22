@@ -111,6 +111,11 @@ namespace Disc_Golf_Scorecard.Views
 
         }
 
+        private void ScorecardSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
 
 
 

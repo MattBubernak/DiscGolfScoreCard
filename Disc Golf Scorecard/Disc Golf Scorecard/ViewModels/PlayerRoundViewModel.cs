@@ -19,7 +19,8 @@ namespace Disc_Golf_Scorecard.ViewModels
         
         public PlayerRoundViewModel(DatabaseContext.PlayerRound playerRound)
         {
-            this.playerRound = playerRound; 
+            this.playerRound = playerRound;
+            shots = new ObservableCollection<ShotViewModel>(); 
         }
 
         public string Name

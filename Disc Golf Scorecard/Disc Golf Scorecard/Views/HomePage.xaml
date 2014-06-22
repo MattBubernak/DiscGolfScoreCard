@@ -19,7 +19,18 @@
 
             <!--Panorama item one-->
             <phone:PanoramaItem Header="Scorecards">
-                <Grid/>
+                <StackPanel>
+                    <phone:LongListSelector x:Name="ScorecardLongListSelector" Height="420" ItemsSource="{Binding scorecards}" SelectionChanged="ScorecardSelector_SelectionChanged">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17">
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    <TextBlock Text="{Binding ScorecardInfo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </StackPanel>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
