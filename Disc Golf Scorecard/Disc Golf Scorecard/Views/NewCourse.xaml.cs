@@ -35,7 +35,11 @@ namespace Disc_Golf_Scorecard.Views
                 string selectedIndex = "";
                 if (NavigationContext.QueryString.TryGetValue("courseIndex", out selectedIndex))
                 {
+                    
                     int index = int.Parse(selectedIndex);
+                    Debug.WriteLine("course index: " + index);
+                    Debug.WriteLine("course ID: " + HomePageViewModel.get_instance().courses[index].course.CourseID);
+
                     DataContext = HomePageViewModel.get_instance().courses[index];
                     courseViewModel = HomePageViewModel.get_instance().courses[index];
                 }

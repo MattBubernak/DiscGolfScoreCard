@@ -22,7 +22,7 @@ namespace Disc_Golf_Scorecard.ViewModels
             this.db = App.DB;
 
             this.playerRound = playerRound;
-            shots = new ObservableCollection<ShotViewModel>(from DatabaseContext.Shot shot in db.Shots select new ShotViewModel(shot));
+            shots = new ObservableCollection<ShotViewModel>(from DatabaseContext.Shot shot in db.Shots where shot._linkedPlayerRoundID == playerRound.PlayerRoundID select new ShotViewModel(shot));
 
         }
 

@@ -21,7 +21,7 @@ namespace Disc_Golf_Scorecard.ViewModels
             this.db = App.DB;
 
             this.scorecardHole = hole;
-            shots = new ObservableCollection<ShotViewModel>(from DatabaseContext.Shot shot in db.Shots select new ShotViewModel(shot));
+            shots = new ObservableCollection<ShotViewModel>(from DatabaseContext.Shot shot in db.Shots where shot._linkedScorecardHoleID == scorecardHole.ScorecardHoleID select new ShotViewModel(shot));
         }
 
         public int Par
