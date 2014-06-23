@@ -32,13 +32,13 @@ namespace Disc_Golf_Scorecard.ViewModels
         public void addPar()
         {
             hole.Par++;
-            NotifyPropertyChanged("ParString");
+            NotifyPropertyChanged("Par");
         }
 
         public void minusPar()
         {
             hole.Par--;
-            NotifyPropertyChanged("ParString");
+            NotifyPropertyChanged("Par");
         }
     }
 }

@@ -33,6 +33,9 @@
             <TextBox x:Name="CourseNameBox" Text="{Binding CourseName}"></TextBox>
             <TextBlock Text="Number of Holes:"></TextBlock>
             <TextBlock Text="{Binding NumberOfHoles}"></TextBlock>
+            <Border Background="DarkSlateGray">
+                <TextBlock Text="Hole           Par         "></TextBlock>
+            </Border>
             <!--
             <ListBox Width="400" Margin="10"
          ItemsSource="{Binding holes}">
@@ -49,13 +52,23 @@
             <phone:LongListSelector  Height="420" ItemsSource="{Binding holes}" x:Name="HoleLongListSelector" SelectionChanged="HoleLongListSelector_SelectionChanged">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="0,0,0,17">
-                            <TextBlock Text="{Binding HoleNumber}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding ParString}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <Button Click="add">+</Button>
-                            <Button Click="subtract">-</Button>
+                        <Grid Margin="0,0,0,17">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="75"></ColumnDefinition>
+                                <ColumnDefinition Width="75"></ColumnDefinition>
 
-                        </StackPanel>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column ="0" Text="{Binding HoleNumber}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Grid.Column ="1" Text="{Binding Par}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <Button Grid.Column ="2" Click="add">+</Button>
+                            <Button Grid.Column ="3" Click="subtract">-</Button>
+
+                        </Grid>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
@@ -67,7 +80,10 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton Click="Add_Hole" IconUri="/Images/add.png" Text="Add Hole"/>
+            <shell:ApplicationBarIconButton Click="Remove_Hole" IconUri="/Images/cancel.png" Text="Save Course"/>
+
             <shell:ApplicationBarIconButton Click="Save_Course" IconUri="/Images/save.png" Text="Save Course"/>
+
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

@@ -83,6 +83,11 @@ namespace Disc_Golf_Scorecard.Views
             Debug.WriteLine("I was called!");
         }
 
+        private void Remove_Hole(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

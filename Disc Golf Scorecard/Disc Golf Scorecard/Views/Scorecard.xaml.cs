@@ -32,5 +32,20 @@ namespace Disc_Golf_Scorecard.Views
                 }
             }
         }
+
+        private void Save_Scorecard(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
+        }
+
+        private void Scorecard_View(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Delete_Scorecard(object sender, EventArgs e)
+        {
+
+        }
     }
 }
