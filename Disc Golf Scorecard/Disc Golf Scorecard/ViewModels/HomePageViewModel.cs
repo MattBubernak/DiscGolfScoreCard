@@ -71,7 +71,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public ScorecardViewModel create_scorecard()
         {
-            DatabaseContext.Scorecard newScorecard = new DatabaseContext.Scorecard {ScorecardDate = DateTime.Now };
+            DatabaseContext.Scorecard newScorecard = new DatabaseContext.Scorecard {ScorecardDate = DateTime.Now , _linkedCourseID = 1 };
             db.Scorecards.InsertOnSubmit(newScorecard);
             db.SubmitChanges();
             scorecards.Add(new ScorecardViewModel(newScorecard));

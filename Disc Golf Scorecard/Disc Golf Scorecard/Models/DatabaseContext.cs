@@ -520,7 +520,30 @@ namespace Disc_Golf_Scorecard.Models
                 }
             }
 
-           
+            [Column]
+            internal int _linkedCourseID;
+
+            // Entity reference
+            private EntityRef<Course> _parentCourse;
+
+            // Association, to describe the relationship between this key and that "storage" table
+            [Association(Storage = "_parentCourse", ThisKey = "_linkedCourseID", OtherKey = "CourseID", IsForeignKey = true)]
+            public Course Course
+            {
+                get { return _parentCourse.Entity; }
+                set
+                {
+                    NotifyPropertyChanging("parentCourse");
+                    _parentCourse.Entity = value;
+
+                    if (value != null)
+                    {
+                        _linkedCourseID = value.CourseID;
+                    }
+
+                    NotifyPropertyChanging("parentCourse");
+                }
+            }
             
 
 
@@ -595,6 +618,16 @@ namespace Disc_Golf_Scorecard.Models
                 set { this._holes.Assign(value); }
             }
 
+            // Define the entity set for the collection side of the relationship.
+            private EntitySet<Scorecard> _scorecards;
+
+            [Association(Storage = "_scorecards", OtherKey = "_linkedCourseID", ThisKey = "CourseID")]
+            public EntitySet<Scorecard> Scorecards
+            {
+                get { return this._scorecards; }
+                set { this._scorecards.Assign(value); }
+            }
+
             
 
 
@@ -604,6 +637,10 @@ namespace Disc_Golf_Scorecard.Models
             _holes = new EntitySet<Hole>(
                 new Action<Hole>(this.attach_Instance),
                 new Action<Hole>(this.detach_Instance)
+                );
+            _scorecards = new EntitySet<Scorecard>(
+                new Action<Scorecard>(this.attach_Instance),
+                new Action<Scorecard>(this.detach_Instance)
                 );
         }
 
@@ -619,6 +656,20 @@ namespace Disc_Golf_Scorecard.Models
         {
             NotifyPropertyChanging("ExerciseInstance");
             hole.Course = null;
+        }
+
+        // Called during an add operation
+        private void attach_Instance(Scorecard scorecard)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            scorecard.Course = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Instance(Scorecard scorecard)
+        {
+            NotifyPropertyChanging("ExerciseInstance");
+            scorecard.Course = null;
         }
 
 

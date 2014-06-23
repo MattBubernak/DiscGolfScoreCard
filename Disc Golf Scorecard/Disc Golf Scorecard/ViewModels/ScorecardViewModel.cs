@@ -32,6 +32,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         }
         public void Update_Course(CourseViewModel course)
         {
+            scorecard.Course = course.course; 
             foreach (DatabaseContext.Hole hole in course.course.Holes)
             {
                 DatabaseContext.ScorecardHole newScorecardHole = new DatabaseContext.ScorecardHole(hole); 
@@ -85,7 +86,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         }
         public string Name
         {
-            get { return "scorecard name"; }
+            get { return scorecard.Course.CourseName; }
         }
 
 
