@@ -14,6 +14,8 @@ namespace Disc_Golf_Scorecard.Views
 {
     public partial class Scorecard : PhoneApplicationPage
     {
+        ScorecardViewModel scorecardViewModel = null; 
+
         public Scorecard()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Disc_Golf_Scorecard.Views
                 {
                     int index = int.Parse(selectedIndex);
                     DataContext = HomePageViewModel.get_instance().scorecards[index];
+                    scorecardViewModel = HomePageViewModel.get_instance().scorecards[index];
                 }
             }
         }
@@ -50,14 +53,17 @@ namespace Disc_Golf_Scorecard.Views
 
         private void add(object sender, RoutedEventArgs e)
         {
+
             ShotViewModel clicked = ((sender as Button).DataContext as ShotViewModel);
             clicked.addScore();
+            scorecardViewModel.NotifyPropertyChangedAllHoles(); 
         }
 
         private void subtract(object sender, RoutedEventArgs e)
         {
             ShotViewModel clicked = ((sender as Button).DataContext as ShotViewModel);
             clicked.subtractScore();
+            scorecardViewModel.NotifyPropertyChangedAllHoles(); 
         }
     }
 }

@@ -90,6 +90,17 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return scorecard.Course.CourseName; }
         }
 
+        public void NotifyPropertyChangedAllHoles()
+        {
+            foreach (PlayerRoundViewModel playerRound in playerRoundViewModels)
+            {
+                foreach (ShotViewModel shot in playerRound.shots )
+                {
+                    shot.NotifyProperties(); 
+                }
+            }
+        }
+
 
     }
 }

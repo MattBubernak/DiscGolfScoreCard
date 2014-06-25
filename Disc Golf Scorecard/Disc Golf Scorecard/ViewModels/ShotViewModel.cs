@@ -34,6 +34,11 @@ namespace Disc_Golf_Scorecard.ViewModels
             }
         }
 
+        public void NotifyProperties()
+        {
+            NotifyPropertyChanged("CumulativeScore");
+        }
+
         public void addScore()
         {
             shot.Score++;
@@ -42,7 +47,7 @@ namespace Disc_Golf_Scorecard.ViewModels
             Debug.WriteLine("Increased the score of this shot id: " + shot.ShotID);
             NotifyPropertyChanged("Score");
             NotifyPropertyChanged("CumulativeScore");
-            shot.PlayerRound.TotalScore++; 
+            
             db.SubmitChanges(); 
         }
         public void subtractScore()
