@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Disc_Golf_Scorecard.Models;
+using System.Diagnostics;
 
 namespace Disc_Golf_Scorecard.ViewModels
 {
@@ -13,7 +14,8 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public ShotViewModel(DatabaseContext.Shot shot)
         {
-            this.shot = shot; 
+            this.shot = shot;
+            this.db = App.DB; 
         }
 
         public string Name
@@ -28,13 +30,29 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get
             {
-                int score = 0;
-                foreach (DatabaseContext.Shot shott in shot.PlayerRound.Shots)
-                {
-                    score += shott.Score; 
-                }
-                return score; 
+                return shot.PlayerRound.TotalScore; 
             }
+        }
+
+        public void addScore()
+        {
+            shot.Score++;
+            shot.PlayerRound.TotalScore++; 
+
+            Debug.WriteLine("Increased the score of this shot id: " + shot.ShotID);
+            NotifyPropertyChanged("Score");
+            NotifyPropertyChanged("CumulativeScore");
+            shot.PlayerRound.TotalScore++; 
+            db.SubmitChanges(); 
+        }
+        public void subtractScore()
+        {
+            shot.Score--;
+            shot.PlayerRound.TotalScore--; 
+
+            NotifyPropertyChanged("Score");
+            NotifyPropertyChanged("CumulativeScore");
+            db.SubmitChanges(); 
         }
 
     }

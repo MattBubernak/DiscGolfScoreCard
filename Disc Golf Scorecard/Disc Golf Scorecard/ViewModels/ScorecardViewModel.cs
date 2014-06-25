@@ -72,6 +72,7 @@ namespace Disc_Golf_Scorecard.ViewModels
                     newShot.PlayerRound = playerRound.playerRound;
 
                     db.Shots.InsertOnSubmit(newShot);
+                    playerRound.playerRound.Shots.Add(newShot); 
                     db.SubmitChanges();
                     ShotViewModel newShotViewModel = new ShotViewModel(newShot);
                     playerRound.shots.Add(newShotViewModel);

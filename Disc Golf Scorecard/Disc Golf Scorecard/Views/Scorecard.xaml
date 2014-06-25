@@ -30,15 +30,37 @@
                     <StackPanel>
                         <TextBlock Text="Par"></TextBlock>
                         <TextBlock Text="{Binding Par}"></TextBlock>
+
+                        <Border Background="DarkSlateGray">
+                            <TextBlock Text="Player        Sum   Hole         "></TextBlock>
+                        </Border>
+                        
                         <phone:LongListSelector  Height="420" ItemsSource="{Binding shots}" x:Name="HoleLongListSelector" >
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="0,0,0,17">
-                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                        <TextBlock Text="{Binding Score}"></TextBlock>
-                                        <TextBlock Text="{Binding CumulativeScore}"></TextBlock>
 
-                                    </StackPanel>
+                                        <Grid Margin="0,0,0,17">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                                <ColumnDefinition Width="75"></ColumnDefinition>
+                                                <ColumnDefinition Width="75"></ColumnDefinition>
+                                                <ColumnDefinition Width="75"></ColumnDefinition>
+                                                <ColumnDefinition Width="75"></ColumnDefinition>
+
+                                        </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column ="0" Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                            <TextBlock Grid.Column ="1" Text="{Binding CumulativeScore}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
+                                            <TextBlock Grid.Column ="2" Text="{Binding Score}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
+                                            <Button Grid.Column ="3" Click="add">+</Button>
+                                            <Button Grid.Column ="4" Click="subtract">-</Button>
+
+                                         </Grid>
+                                    
+                                    
+                                    
                                 </DataTemplate>
                             </phone:LongListSelector.ItemTemplate>
                         </phone:LongListSelector>
@@ -55,6 +77,7 @@
 
             <shell:ApplicationBarIconButton Click="Save_Scorecard" IconUri="/Images/save.png" Text="Save"/>
             <shell:ApplicationBarIconButton Click="Delete_Scorecard" IconUri="/Images/delete.png" Text="Delete"/>
+            <shell:ApplicationBarIconButton Click="Scorecard_View" IconUri="/Images/scorecard.png" Text="Scorecard"/>
 
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

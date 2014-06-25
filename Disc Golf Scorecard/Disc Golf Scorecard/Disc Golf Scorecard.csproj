@@ -243,6 +243,7 @@
     <Content Include="Images\questionmark.png" />
     <Content Include="Images\refresh.png" />
     <Content Include="Images\save.png" />
+    <Content Include="Images\scorecard.png" />
     <Content Include="Images\share.png" />
     <Content Include="Images\stop.png" />
     <Content Include="Images\sync.png" />

@@ -258,6 +258,22 @@ namespace Disc_Golf_Scorecard.Models
                     }
                 }
             }
+            private int _totalScore;
+
+            [Column]
+            public int TotalScore
+            {
+                get { return _totalScore; }
+                set
+                {
+                    if (_totalScore != value)
+                    {
+                        NotifyPropertyChanging("TotalScore");
+                        _totalScore = value;
+                        NotifyPropertyChanged("TotalScore");
+                    }
+                }
+            }
 
 
             [Column]

@@ -47,5 +47,17 @@ namespace Disc_Golf_Scorecard.Views
         {
 
         }
+
+        private void add(object sender, RoutedEventArgs e)
+        {
+            ShotViewModel clicked = ((sender as Button).DataContext as ShotViewModel);
+            clicked.addScore();
+        }
+
+        private void subtract(object sender, RoutedEventArgs e)
+        {
+            ShotViewModel clicked = ((sender as Button).DataContext as ShotViewModel);
+            clicked.subtractScore();
+        }
     }
 }

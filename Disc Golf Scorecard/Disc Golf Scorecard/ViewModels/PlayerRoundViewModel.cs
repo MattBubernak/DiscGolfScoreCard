@@ -30,5 +30,10 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return playerRound.Player.FirstName; }
         }
+
+        public int TotalScore
+        {
+            get { return playerRound.TotalScore; }
+        }
     }
 }
