@@ -40,5 +40,10 @@ namespace Disc_Golf_Scorecard.ViewModels
             hole.Par--;
             NotifyPropertyChanged("Par");
         }
+        
+        public string HoleString
+        {
+            get { return " Hole # " + hole.HoleNumber;  }
+        }
     }
 }

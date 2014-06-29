@@ -21,7 +21,7 @@
         <phone:Pivot Title="{Binding ScorecardName}" ItemsSource="{Binding scorecardHoles}">
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
-                    <ContentControl Content="{Binding HoleNumber}" />
+                    <ContentControl Content="{Binding HoleString}" />
                 </DataTemplate>
             </phone:Pivot.HeaderTemplate>
             <phone:Pivot.ItemTemplate>
