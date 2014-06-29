@@ -43,7 +43,10 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Scorecard_View(object sender, EventArgs e)
         {
-
+            int selectedIndex = HomePageViewModel.get_instance().scorecards.IndexOf(scorecardViewModel);
+            string selectedIndexString = selectedIndex.ToString(); 
+                 NavigationService.Navigate(new Uri("/Views/ScorecardView.xaml?scorecardIndex=" + selectedIndexString, UriKind.Relative));
+             
         }
 
         private void Delete_Scorecard(object sender, EventArgs e)

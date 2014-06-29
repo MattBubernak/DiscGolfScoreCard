@@ -33,5 +33,26 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return scorecardHole.HoleNumber; }
         }
+        public string HoleString
+        {
+            get { return "Hole # " + scorecardHole.HoleNumber; }
+        }
+        public string ParString
+        {
+            get { return "Par is " + Par;  }
+        }
+        public string ShotString
+        {
+            get
+            {
+                string ShotString = "";
+                ShotString += scorecardHole.HoleNumber + "    " + scorecardHole.Par + "    ";
+                foreach (ShotViewModel shot in shots)
+                {
+                    ShotString += shot.Score + "    ";
+                }
+                return ShotString;
+            }
+        }
     }
 }

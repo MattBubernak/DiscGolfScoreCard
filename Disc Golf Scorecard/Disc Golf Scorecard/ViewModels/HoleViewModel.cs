@@ -28,10 +28,6 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return hole.HoleNumber; }
         }
-        public string ParString
-        {
-            get { return "Par " + Par; }
-        }
 
         public void addPar()
         {
@@ -49,5 +45,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return " Hole # " + hole.HoleNumber;  }
         }
+
+        
     }
 }

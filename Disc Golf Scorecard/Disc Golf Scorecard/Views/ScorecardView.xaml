@@ -22,14 +22,86 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Disc Golf Scorecard" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Name}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
-        </Grid>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="60">
+                <Border Background="DarkSlateGray">
+
+                    <TextBlock Text="      ">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform Rotation="90"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Border>
+                <Border Background="DarkSlateGray">
+
+                    <TextBlock Text="Hole #">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform Rotation="90"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Border>
+                <Border Background="DarkSlateGray">
+
+                    <TextBlock Text="Par">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform Rotation="90"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Border>
+
+                
+                <ListBox  x:Name="PlayerLongListSelector" ItemsSource="{Binding playerRoundViewModels}" Width="332" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"  Margin="30,0,0,0" ></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSmallStyle}">
+                                    <TextBlock.RenderTransform>
+                                        <CompositeTransform Rotation="90"/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                
+                </ListBox>
+                
+
+
+            </StackPanel>
+
+            <phone:LongListSelector  Height="420" ItemsSource="{Binding scorecardHoles}" x:Name="HoleLongListSelector" >
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,17">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column ="1" Text="{Binding ShotString}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+
+
+                        </Grid>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+
+        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>

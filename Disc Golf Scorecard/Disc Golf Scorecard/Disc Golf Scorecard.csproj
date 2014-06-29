@@ -140,6 +140,9 @@
     <Compile Include="Views\ScorecardView.xaml.cs">
       <DependentUpon>ScorecardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ScorecardView2.xaml.cs">
+      <DependentUpon>ScorecardView2.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ScorecardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScorecardView2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,11 +12,11 @@ using Disc_Golf_Scorecard.Models;
 
 namespace Disc_Golf_Scorecard.Views
 {
-    public partial class ScorecardView : PhoneApplicationPage
+    public partial class ScorecardView2 : PhoneApplicationPage
     {
         public ScorecardViewModel scorecardViewModel = null; 
 
-        public ScorecardView()
+        public ScorecardView2()
         {
             InitializeComponent();
         }
