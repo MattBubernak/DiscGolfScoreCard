@@ -20,6 +20,10 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return hole.Par; }
         }
+        public string ParString
+        {
+            get { return "Par is " + hole.Par; }
+        }
         public int HoleNumber
         {
             get { return hole.HoleNumber; }

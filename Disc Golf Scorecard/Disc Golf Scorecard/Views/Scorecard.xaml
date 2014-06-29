@@ -28,8 +28,7 @@
                 <DataTemplate>
                     <!--<ContentControl Content="{Binding Par}" />-->
                     <StackPanel>
-                        <TextBlock Text="Par"></TextBlock>
-                        <TextBlock Text="{Binding Par}"></TextBlock>
+                        <TextBlock Text="{Binding ParString}" Style="{StaticResource PhoneTextLargeStyle}"></TextBlock>
 
                         <Border Background="DarkSlateGray">
                             <TextBlock Text="Player        Sum   Hole         "></TextBlock>
@@ -44,7 +43,7 @@
                                                 <RowDefinition Height="auto"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                                <ColumnDefinition Width="150"></ColumnDefinition>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
