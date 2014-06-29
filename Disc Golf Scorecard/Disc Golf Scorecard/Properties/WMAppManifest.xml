@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{538ca3de-f351-4354-9f1c-2a6169aaa4f6}" Title="Disc_Golf_Scorecard" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Disc_Golf_Scorecard author" Description="Sample description" Publisher="Disc_Golf_Scorecard" PublisherID="{1c48a49a-a11b-4e60-8315-a45341777df3}">
+  <App xmlns="" ProductID="{538ca3de-f351-4354-9f1c-2a6169aaa4f6}" Title="Disc Golf Scorecard" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Disc_Golf_Scorecard author" Description="Sample description" Publisher="Disc_Golf_Scorecard" PublisherID="{1c48a49a-a11b-4e60-8315-a45341777df3}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
