@@ -35,6 +35,18 @@ namespace Disc_Golf_Scorecard.Views
             }
         }
 
+        private void Edit_Scorecard(object sender, EventArgs e)
+        {
+            int selectedIndex = HomePageViewModel.get_instance().scorecards.IndexOf(scorecardViewModel);
+            string selectedIndexString = selectedIndex.ToString();
+            NavigationService.Navigate(new Uri("/Views/Scorecard.xaml?scorecardIndex=" + selectedIndexString, UriKind.Relative));
+        }
+
+        private void Email_Scorecad(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

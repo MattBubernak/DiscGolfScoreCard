@@ -104,4 +104,14 @@
         </StackPanel>
     </Grid>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+
+            <shell:ApplicationBarIconButton Click="Edit_Scorecard" IconUri="/Images/edit.png" Text="Edit"/>
+            <shell:ApplicationBarIconButton Click="Email_Scorecad" IconUri="/Images/feature.email.png" Text="Email"/>
+
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
+    
 </phone:PhoneApplicationPage>
