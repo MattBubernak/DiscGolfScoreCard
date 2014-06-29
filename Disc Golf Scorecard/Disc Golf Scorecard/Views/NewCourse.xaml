@@ -49,7 +49,7 @@
             </ListBox>
             -->
 
-            <phone:LongListSelector  Height="420" ItemsSource="{Binding holes}" x:Name="HoleLongListSelector" SelectionChanged="HoleLongListSelector_SelectionChanged">
+            <phone:LongListSelector  Height="356" ItemsSource="{Binding holes}" x:Name="HoleLongListSelector" SelectionChanged="HoleLongListSelector_SelectionChanged">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,0,0,17">
