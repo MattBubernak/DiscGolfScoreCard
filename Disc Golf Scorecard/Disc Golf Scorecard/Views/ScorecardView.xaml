@@ -55,8 +55,9 @@
                     </TextBlock>
                 </Border>
 
-                
-                <ListBox  x:Name="PlayerLongListSelector" ItemsSource="{Binding playerRoundViewModels}" Width="332" >
+                <Border Background="DarkSlateGray">
+
+                    <ListBox  x:Name="PlayerLongListSelector" ItemsSource="{Binding playerRoundViewModels}" Width="332" >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"  Margin="30,0,0,0" ></StackPanel>
@@ -75,7 +76,7 @@
                     </ListBox.ItemTemplate>
                 
                 </ListBox>
-                
+                </Border>
 
 
             </StackPanel>
@@ -92,7 +93,7 @@
 
 
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column ="1" Text="{Binding ShotString}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Grid.Column ="1" Text="{Binding ShotString}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextNormalStyle}" />
 
 
                         </Grid>
