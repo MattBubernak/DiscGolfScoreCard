@@ -27,6 +27,7 @@ namespace Disc_Golf_Scorecard.Views
         {
             courseViewModel.Create_Hole();
         }
+       
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -85,7 +86,7 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Remove_Hole(object sender, EventArgs e)
         {
-
+            courseViewModel.remove_hole(); 
         }
 
 

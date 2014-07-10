@@ -50,6 +50,19 @@ namespace Disc_Golf_Scorecard.ViewModels
             NotifyPropertyChanged("NumberOfHoles");
         }
 
+        public void remove_hole()
+        {
+            if (course.Holes.Count > 0)
+            {
+                db.Holes.DeleteOnSubmit(course.Holes[course.Holes.Count - 1]);
+                holes.Remove(holes[holes.Count-1]);
+                db.SubmitChanges();
+                NotifyPropertyChanged("holes"); 
+                NotifyPropertyChanged("NumberOfHoles");
+
+            }
+        }
+
         public void update_in_db(string CourseName)
         {
             course.CourseName = CourseName;

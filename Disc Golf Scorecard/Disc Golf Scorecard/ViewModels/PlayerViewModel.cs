@@ -24,7 +24,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public string PlayerInfo
         {
-            get { return "0 rounds played" ; }
+            get { return player.PlayerRounds.Count + " rounds played" ; }
         }
 
 
