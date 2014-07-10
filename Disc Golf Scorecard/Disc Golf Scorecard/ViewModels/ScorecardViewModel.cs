@@ -85,6 +85,35 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return " played on " + scorecard.ScorecardDate.ToString(); }
         }
+        public int Par
+        {
+            get
+            {
+                int par = 0; 
+                foreach (DatabaseContext.ScorecardHole hole in scorecard.ScorecardHoles)
+                {
+                    par += hole.Par; 
+                }
+                return par;
+            }
+        }
+
+        public string TotalString
+        {
+            get
+            {
+                string ShotString = "";
+               
+
+                ShotString += "SUM" + "       " + Par + "          ";
+                foreach (PlayerRoundViewModel player in playerRoundViewModels)
+                {
+                    ShotString += player.Total + "         ";
+                }
+                return ShotString;
+            }
+        }
+
         public string Name
         {
             get { return scorecard.Course.CourseName; }

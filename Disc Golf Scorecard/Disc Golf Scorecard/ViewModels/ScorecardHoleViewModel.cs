@@ -54,5 +54,6 @@ namespace Disc_Golf_Scorecard.ViewModels
                 return ShotString;
             }
         }
+       
     }
 }

@@ -101,6 +101,10 @@
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
 
+            <TextBlock Text="{Binding TotalString}" Style="{StaticResource PhoneTextNormalStyle}">
+               
+            </TextBlock>
+
 
         </StackPanel>
     </Grid>

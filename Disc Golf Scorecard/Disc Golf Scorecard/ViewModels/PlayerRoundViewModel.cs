@@ -35,5 +35,19 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return playerRound.TotalScore; }
         }
+
+        public int Total
+        {
+            get 
+            {
+                int total = 0; 
+                foreach (ShotViewModel shot in shots)
+                {
+                    total += shot.Score;
+                }
+                return total; 
+
+            }
+        }
     }
 }

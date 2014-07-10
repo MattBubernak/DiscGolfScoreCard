@@ -27,6 +27,8 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return "0 rounds played" ; }
         }
 
+
+
         
 
     }
