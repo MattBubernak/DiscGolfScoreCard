@@ -67,12 +67,15 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="About">
-                <StackPanel>
-                    <TextBlock>Author:</TextBlock>
-                    <TextBlock>BirdBucket Productions</TextBlock>
-                    <TextBlock>Version:</TextBlock>
-                    <TextBlock>.01</TextBlock>
-                    
+                <StackPanel Background="Black">
+
+
+                    <TextBlock>Author: BirdBucket Productions</TextBlock>
+                    <TextBlock>Version: .01</TextBlock>
+                    <Button Click="send_email">Email BirdBucket Productions</Button>
+                    <Image Height="100" Width="100" Source="/Images/bblogo.png"></Image>
+
+
                 </StackPanel>
             </phone:PanoramaItem>
             

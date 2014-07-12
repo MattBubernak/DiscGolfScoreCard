@@ -224,6 +224,7 @@
     <Content Include="Images\add.png" />
     <Content Include="Images\back.png" />
     <Content Include="Images\basecircle.png" />
+    <Content Include="Images\bblogo.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\close.png" />
