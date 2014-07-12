@@ -49,9 +49,9 @@ namespace Disc_Golf_Scorecard.ViewModels
             scorecards = new ObservableCollection<ScorecardViewModel>(from DatabaseContext.Scorecard instance in db.Scorecards select new ScorecardViewModel(instance));
         }
 
-        public void add_player(string fname, string lname, string email, string phone)
+        public void add_player(string nname, string fname, string lname, string email, string phone)
         {
-            DatabaseContext.Player newPlayer = new DatabaseContext.Player { FirstName = fname, LastName = lname, EmailAddress = email, PhoneNumber = phone };
+            DatabaseContext.Player newPlayer = new DatabaseContext.Player {NickName = nname,  FirstName = fname, LastName = lname, EmailAddress = email, PhoneNumber = phone };
             db.Players.InsertOnSubmit(newPlayer);
             db.SubmitChanges();
             players.Add(new PlayerViewModel(newPlayer));

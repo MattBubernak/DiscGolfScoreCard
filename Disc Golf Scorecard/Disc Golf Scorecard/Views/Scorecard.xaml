@@ -10,7 +10,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
+    SupportedOrientations="Portrait"  Orientation="Landscape"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -31,7 +31,7 @@
                         <TextBlock Text="{Binding ParString}" Style="{StaticResource PhoneTextLargeStyle}"></TextBlock>
 
                         <Border Background="DarkSlateGray">
-                            <TextBlock Text="Player        Sum   Hole         "></TextBlock>
+                            <TextBlock Text="Player                 Sum   Hole         "></TextBlock>
                         </Border>
                         
                         <phone:LongListSelector  Height="420" ItemsSource="{Binding shots}" x:Name="HoleLongListSelector" >
@@ -50,7 +50,7 @@
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
 
                                         </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column ="0" Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                            <TextBlock Grid.Column ="0" Text="{Binding NickName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                             <TextBlock Grid.Column ="1" Text="{Binding CumulativeScore}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
                                             <TextBlock Grid.Column ="2" Text="{Binding Score}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
                                             <Button Grid.Column ="3" Click="add">+</Button>

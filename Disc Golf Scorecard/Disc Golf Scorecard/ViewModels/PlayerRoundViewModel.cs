@@ -26,9 +26,9 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         }
 
-        public string Name
+        public string NameName
         {
-            get { return playerRound.Player.FirstName; }
+            get { return playerRound.Player.NickName; }
         }
 
         public int TotalScore

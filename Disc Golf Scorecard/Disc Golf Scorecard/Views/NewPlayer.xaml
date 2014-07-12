@@ -28,6 +28,8 @@
 
         <!--ContentPanel - place additional content here-->
         <StackPanel Margin="0,157,0,143" Grid.RowSpan="2">
+            <TextBlock Text="Nick Name(Must be less than 8 characters)"></TextBlock>
+            <TextBox x:Name = "NickNameBox"></TextBox>
             <TextBlock Text="First Name"></TextBlock>
             <TextBox x:Name="FirstNameBox"></TextBox>
             <TextBlock Text="Last Name"></TextBlock>

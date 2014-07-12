@@ -14,6 +14,10 @@ namespace Disc_Golf_Scorecard.Views
 {
     public partial class NewPlayer : PhoneApplicationPage
     {
+        const string INVALID_NICKNAME_MESSAGE = "Please enter a valid nickname that is between 1 and 8 characters";
+        const string INVALID_LASTNAME_MESSAGE = "Please enter a first name";
+        const string INVALID_FIRSTNAME_MESSAGE ="Please enter a last name";
+
         const string INVALID_NUMBER_MESSAGE = "Invalid Number(leave blank if unknown).";
         const string ERROR_MESSAGE_TITLE = "Error";
 
@@ -33,8 +37,23 @@ namespace Disc_Golf_Scorecard.Views
             //{
             //    Show_Error_Message(INVALID_NUMBER_MESSAGE);
             //}
-            HomePageViewModel.get_instance().add_player(FirstNameBox.Text.ToString(), LastNameBox.Text.ToString(), EmailBox.Text.ToString(), PhoneNumberBox.Text.ToString());
-            NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
+            if (NickNameBox.Text.ToString().Length > 8 || NickNameBox.Text.ToString().Length < 1)
+            {
+                Show_Error_Message(INVALID_NICKNAME_MESSAGE);
+            }
+            if (FirstNameBox.Text.ToString().Length < 1)
+            {
+                Show_Error_Message(INVALID_FIRSTNAME_MESSAGE);
+            }
+            if (LastNameBox.Text.ToString().Length < 1)
+            {
+                Show_Error_Message(INVALID_LASTNAME_MESSAGE);
+            }
+            else
+            {
+                HomePageViewModel.get_instance().add_player(NickNameBox.Text.ToString(), FirstNameBox.Text.ToString(), LastNameBox.Text.ToString(), EmailBox.Text.ToString(), PhoneNumberBox.Text.ToString());
+                NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
+            }
 
         }
 

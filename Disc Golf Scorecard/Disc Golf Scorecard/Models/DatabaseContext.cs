@@ -52,6 +52,24 @@ namespace Disc_Golf_Scorecard.Models
             }
 
             // Define item name: private field, public property, and database column.
+            private string _nickName;
+
+            [Column]
+            public string NickName
+            {
+                get { return _nickName; }
+                set
+                {
+                    if (_nickName != value)
+                    {
+                        NotifyPropertyChanging("NickName");
+                        _nickName = value;
+                        NotifyPropertyChanged("NickName");
+                    }
+                }
+            }
+
+            // Define item name: private field, public property, and database column.
             private string _firstName;
 
             [Column]

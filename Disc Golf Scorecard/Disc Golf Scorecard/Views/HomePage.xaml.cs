@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Diagnostics;
 using Disc_Golf_Scorecard.ViewModels;
+using Microsoft.Phone.Tasks;
+
 
 namespace Disc_Golf_Scorecard.Views
 {
@@ -117,6 +119,12 @@ namespace Disc_Golf_Scorecard.Views
             ScorecardViewModel selectedScorecard = ScorecardLongListSelector.SelectedItem as ScorecardViewModel;
             NavigationService.Navigate(new Uri("/Views/Scorecard.xaml?scorecardIndex=" + HomePageViewModel.get_instance().scorecards.IndexOf(selectedScorecard), UriKind.Relative));
             CourseLongListSelector.SelectedItem = null;
+        }
+
+        private void send_email(object sender, RoutedEventArgs e)
+        {
+            var task = new EmailComposeTask { To = "BirdBucketProductions@gmail.com" };
+            task.Show();
         }
 
 
