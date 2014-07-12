@@ -27,9 +27,26 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock>NickName:</TextBlock>
+            <TextBlock Text="{Binding NickName}"></TextBlock>
+            <TextBlock>First Name:</TextBlock>
+            <TextBlock Text="{Binding FirstName}"></TextBlock>
+            <TextBlock>Last Name:</TextBlock>
+            <TextBlock Text="{Binding LastName}"></TextBlock>
+            <TextBlock>Phone Number:</TextBlock>
+            <TextBlock Text="{Binding Phone}"></TextBlock>
+            <TextBlock>Email Addres:</TextBlock>
+            <TextBlock Text="{Binding Email}"></TextBlock>
+        </StackPanel>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Click="email_player" IconUri="/Images/feature.email.png" Text="Save"/>
+            <shell:ApplicationBarIconButton Click="call_player" IconUri="/Images/feature.phone.png" Text="Save"/>
+            <shell:ApplicationBarIconButton Click="edit_player" IconUri="/Images/edit.png" Text="Save"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
