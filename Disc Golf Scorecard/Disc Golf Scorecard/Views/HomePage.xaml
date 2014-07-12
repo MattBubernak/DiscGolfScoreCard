@@ -67,7 +67,13 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="About">
-                <Grid/>
+                <StackPanel>
+                    <TextBlock>Author:</TextBlock>
+                    <TextBlock>BirdBucket Productions</TextBlock>
+                    <TextBlock>Version:</TextBlock>
+                    <TextBlock>.01</TextBlock>
+                    
+                </StackPanel>
             </phone:PanoramaItem>
             
         </phone:Panorama>
