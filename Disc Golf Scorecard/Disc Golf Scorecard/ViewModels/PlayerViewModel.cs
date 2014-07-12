@@ -32,6 +32,11 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return player.PlayerRounds.Count + " rounds played" ; }
         }
 
+        public int Rounds
+        {
+            get { return player.PlayerRounds.Count; }
+        }
+
 
 
         

@@ -34,6 +34,8 @@
             <TextBlock Text="{Binding Phone}"></TextBlock>
             <TextBlock>Email Addres:</TextBlock>
             <TextBlock Text="{Binding Email}"></TextBlock>
+            <TextBlock>Rounds Played</TextBlock>
+            <TextBlock Text="{Binding Rounds}"></TextBlock>
         </StackPanel>
     </Grid>
 
