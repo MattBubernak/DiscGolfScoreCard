@@ -12,7 +12,7 @@ using Disc_Golf_Scorecard.ViewModels;
 
 namespace Disc_Golf_Scorecard.Views
 {
-    public partial class NewPlayer : PhoneApplicationPage
+    public partial class EditPlayer : PhoneApplicationPage
     {
         const string INVALID_NICKNAME_MESSAGE = "Please enter a valid nickname that is between 1 and 8 characters";
         const string INVALID_LASTNAME_MESSAGE = "Please enter a first name";
@@ -21,23 +21,38 @@ namespace Disc_Golf_Scorecard.Views
         const string INVALID_NUMBER_MESSAGE = "Invalid Number(leave blank if unknown).";
         const string ERROR_MESSAGE_TITLE = "Error";
 
-        public NewPlayer()
+        public PlayerViewModel player = null; 
+
+        public EditPlayer()
         {
-            
             InitializeComponent();
-           // DataContext = HomePageViewModel.get_instance();
+            DataContext = null; 
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (DataContext == null)
+            {
+                string selectedIndex = "";
+                if (NavigationContext.QueryString.TryGetValue("playerIndex", out selectedIndex))
+                {
+                    int index = int.Parse(selectedIndex);
+                    player = HomePageViewModel.get_instance().players[index];
+                    DataContext = player;
+                }
+            }
+        }
+
 
         private void Save_Player(object sender, EventArgs e)
         {
-           
-
             //confirm that player number is an integer, otherwise throw error
             //int playerNumber;
             //if (Int32.TryParse(NumberBox.Text.ToString(), out playerNumber) == false && NumberBox.Text.ToString() != "")
             //{
             //    Show_Error_Message(INVALID_NUMBER_MESSAGE);
             //}
+           
             if (NickNameBox.Text.ToString().Length > 8 || NickNameBox.Text.ToString().Length < 1)
             {
                 Show_Error_Message(INVALID_NICKNAME_MESSAGE);
@@ -52,7 +67,7 @@ namespace Disc_Golf_Scorecard.Views
             }
             else
             {
-                HomePageViewModel.get_instance().add_player(NickNameBox.Text.ToString(), FirstNameBox.Text.ToString(), LastNameBox.Text.ToString(), EmailBox.Text.ToString(), PhoneNumberBox.Text.ToString());
+                HomePageViewModel.get_instance().update_player(NickNameBox.Text.ToString(), FirstNameBox.Text.ToString(), LastNameBox.Text.ToString(), EmailBox.Text.ToString(), PhoneNumberBox.Text.ToString());
                 NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
             }
 

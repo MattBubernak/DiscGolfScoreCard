@@ -21,7 +21,22 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return player.FirstName + " " + player.LastName; }
         }
-
+        public string FirstName
+        {
+            get { return player.FirstName; }
+        }
+        public string LastName
+        {
+            get { return player.LastName; }
+        }
+        public string Email
+        {
+            get { return player.EmailAddress; }
+        }
+        public string Phone
+        {
+            get { return player.PhoneNumber; }
+        }
         public string NickName
         {
             get { return player.NickName; }

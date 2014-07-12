@@ -55,7 +55,7 @@ namespace Disc_Golf_Scorecard.Views
 
         private void edit_player(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/NewPlayer.xaml?playerIndex=" + recIndex, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/EditPlayer.xaml?playerIndex=" + recIndex, UriKind.Relative));
         }
     }
 }
