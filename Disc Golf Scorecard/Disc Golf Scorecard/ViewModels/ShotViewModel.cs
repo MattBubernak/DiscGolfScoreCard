@@ -18,9 +18,9 @@ namespace Disc_Golf_Scorecard.ViewModels
             this.db = App.DB; 
         }
 
-        public string Name
+        public string NickName
         {
-            get { return shot.PlayerRound.Player.FirstName + " " + shot.PlayerRound.Player.LastName ; }
+            get { return shot.PlayerRound.Player.NickName; }
         }
         public int Score
         {

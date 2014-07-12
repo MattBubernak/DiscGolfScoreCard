@@ -31,7 +31,7 @@
                         <TextBlock Text="{Binding ParString}" Style="{StaticResource PhoneTextLargeStyle}"></TextBlock>
 
                         <Border Background="DarkSlateGray">
-                            <TextBlock Text="Player                 Sum   Hole         "></TextBlock>
+                            <TextBlock Text="Player                 Sum      Hole         "></TextBlock>
                         </Border>
                         
                         <phone:LongListSelector  Height="420" ItemsSource="{Binding shots}" x:Name="HoleLongListSelector" >
