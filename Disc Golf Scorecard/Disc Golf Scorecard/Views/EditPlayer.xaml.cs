@@ -57,11 +57,11 @@ namespace Disc_Golf_Scorecard.Views
             {
                 Show_Error_Message(INVALID_NICKNAME_MESSAGE);
             }
-            if (FirstNameBox.Text.ToString().Length < 1)
+            else if (FirstNameBox.Text.ToString().Length < 1)
             {
                 Show_Error_Message(INVALID_FIRSTNAME_MESSAGE);
             }
-            if (LastNameBox.Text.ToString().Length < 1)
+            else if (LastNameBox.Text.ToString().Length < 1)
             {
                 Show_Error_Message(INVALID_LASTNAME_MESSAGE);
             }
