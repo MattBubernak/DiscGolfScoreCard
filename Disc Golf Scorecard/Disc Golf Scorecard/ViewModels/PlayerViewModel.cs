@@ -15,6 +15,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         public PlayerViewModel(DatabaseContext.Player player)
         {
             this.player = player; 
+            db = App.DB; 
         }
 
         public string FullName
@@ -50,6 +51,16 @@ namespace Disc_Golf_Scorecard.ViewModels
         public int Rounds
         {
             get { return player.PlayerRounds.Count; }
+        }
+
+        public void Update(string NickName, string FirstName, string LastName, string Email, string Phone)
+        {
+            player.NickName = NickName; 
+            player.FirstName = FirstName; 
+            player.LastName = LastName; 
+            player.EmailAddress = Email; 
+            player.PhoneNumber = Phone; 
+            db.SubmitChanges(); 
         }
 
 
