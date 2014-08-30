@@ -28,6 +28,19 @@ namespace Disc_Golf_Scorecard.ViewModels
             get {return course.Holes.Count;}
         }
 
+        public int Par
+        {
+            get
+            {
+                int Par = 0; 
+                foreach (HoleViewModel hole in holes)
+                {
+                    Par += hole.Par; 
+                }
+                return Par; 
+            }
+        }
+
         public string CourseName
         {
             get { return course.CourseName; }
@@ -35,7 +48,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public string CourseInfo
         {
-            get { return NumberOfHoles + " holes"; }
+            get { return NumberOfHoles + " holes" + ", Par " + Par; }
         }
 
         public void Create_Hole()

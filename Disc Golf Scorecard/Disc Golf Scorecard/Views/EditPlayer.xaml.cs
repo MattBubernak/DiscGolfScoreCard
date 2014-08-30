@@ -67,7 +67,7 @@ namespace Disc_Golf_Scorecard.Views
             }
             else
             {
-                HomePageViewModel.get_instance().update_player(NickNameBox.Text.ToString(), FirstNameBox.Text.ToString(), LastNameBox.Text.ToString(), EmailBox.Text.ToString(), PhoneNumberBox.Text.ToString());
+                //HomePageViewModel.get_instance().update_player(NickNameBox.Text.ToString(), FirstNameBox.Text.ToString(), LastNameBox.Text.ToString(), EmailBox.Text.ToString(), PhoneNumberBox.Text.ToString());
                 NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
             }
 
