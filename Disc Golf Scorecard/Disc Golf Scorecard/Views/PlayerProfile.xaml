@@ -41,9 +41,9 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton Click="email_player" IconUri="/Images/feature.email.png" Text="Save"/>
-            <shell:ApplicationBarIconButton Click="call_player" IconUri="/Images/feature.phone.png" Text="Save"/>
-            <shell:ApplicationBarIconButton Click="edit_player" IconUri="/Images/edit.png" Text="Save"/>
+            <shell:ApplicationBarIconButton Click="email_player" IconUri="/Images/feature.email.png" Text="Email"/>
+            <shell:ApplicationBarIconButton Click="call_player" IconUri="/Images/feature.phone.png" Text="Call"/>
+            <shell:ApplicationBarIconButton Click="edit_player" IconUri="/Images/edit.png" Text="Edit"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
