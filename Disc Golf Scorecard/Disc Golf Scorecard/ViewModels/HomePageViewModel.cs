@@ -79,7 +79,33 @@ namespace Disc_Golf_Scorecard.ViewModels
             return scorecards[scorecards.Count - 1];
         }
 
+        public void delete_scorecard(ScorecardViewModel scorecard)
+        {
+            //remove the view model 
+            this.scorecards.Remove(scorecard);
+            //remove all the holes
+            foreach (ScorecardHoleViewModel hole in scorecard.scorecardHoles)
+            {
+                db.ScorecardHoles.DeleteOnSubmit(hole.scorecardHole); 
+            }
 
+            //remove all the player rounds 
+            foreach (PlayerRoundViewModel playerround in scorecard.playerRoundViewModels)
+            {
+                //remove all the shots 
+                foreach (ShotViewModel shot in playerround.shots)
+                {
+                    db.Shots.DeleteOnSubmit(shot.shot); 
+                }
+                //remove the round
+                db.PlayerRounds.DeleteOnSubmit(playerround.playerRound);
+
+            }
+            //remove the scorecard 
+            db.Scorecards.DeleteOnSubmit(scorecard.scorecard);
+            //submit all the changes 
+            db.SubmitChanges(); 
+        }
 
     }
 }

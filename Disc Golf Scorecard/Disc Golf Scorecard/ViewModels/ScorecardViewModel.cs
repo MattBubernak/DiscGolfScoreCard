@@ -26,6 +26,8 @@ namespace Disc_Golf_Scorecard.ViewModels
             scorecardHoles = new ObservableCollection<ScorecardHoleViewModel>(from DatabaseContext.ScorecardHole scorecardHole in db.ScorecardHoles where scorecardHole._linkedScorecardID == scorecard.ScorecardID select new ScorecardHoleViewModel(scorecardHole));
             playerRoundViewModels = new ObservableCollection<PlayerRoundViewModel>(from DatabaseContext.PlayerRound playerRound in db.PlayerRounds where playerRound._linkedScorecardID == scorecard.ScorecardID select new PlayerRoundViewModel(playerRound));
         }
+
+       
         public void Update_Description(string Description)
         {
             this.scorecard.ScorecardDescription = Description;

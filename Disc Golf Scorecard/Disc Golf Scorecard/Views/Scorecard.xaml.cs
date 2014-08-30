@@ -46,13 +46,22 @@ namespace Disc_Golf_Scorecard.Views
             int selectedIndex = HomePageViewModel.get_instance().scorecards.IndexOf(scorecardViewModel);
             string selectedIndexString = selectedIndex.ToString(); 
                  NavigationService.Navigate(new Uri("/Views/ScorecardView.xaml?scorecardIndex=" + selectedIndexString, UriKind.Relative));
-             
+         
         }
 
         private void Delete_Scorecard(object sender, EventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this scorecard?", "Delete", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                HomePageViewModel.get_instance().delete_scorecard(this.scorecardViewModel);
+                NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
+
+            }
+            
 
         }
+
 
         private void add(object sender, RoutedEventArgs e)
         {

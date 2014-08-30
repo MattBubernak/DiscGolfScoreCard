@@ -75,6 +75,7 @@
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
 
             <shell:ApplicationBarIconButton Click="Save_Scorecard" IconUri="/Images/save.png" Text="Save"/>
+            <shell:ApplicationBarIconButton Click="Delete_Scorecard" IconUri="/Images/delete.png" Text="Delete"/>
             <shell:ApplicationBarIconButton Click="Scorecard_View" IconUri="/Images/scorecard.png" Text="Scorecard"/>
 
         </shell:ApplicationBar>
