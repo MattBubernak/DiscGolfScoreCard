@@ -117,7 +117,7 @@ namespace Disc_Golf_Scorecard.Views
         {
             
             ScorecardViewModel selectedScorecard = ScorecardLongListSelector.SelectedItem as ScorecardViewModel;
-            NavigationService.Navigate(new Uri("/Views/Scorecard.xaml?scorecardIndex=" + HomePageViewModel.get_instance().scorecards.IndexOf(selectedScorecard), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/ScorecardView.xaml?scorecardIndex=" + HomePageViewModel.get_instance().scorecards.IndexOf(selectedScorecard), UriKind.Relative));
             CourseLongListSelector.SelectedItem = null;
         }
 
