@@ -37,8 +37,11 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public void minusPar()
         {
-            hole.Par--;
-            NotifyPropertyChanged("Par");
+            if (hole.Par > 0)
+            {
+                hole.Par--;
+                NotifyPropertyChanged("Par");
+            }
         }
         
         public string HoleString

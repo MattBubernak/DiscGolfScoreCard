@@ -52,12 +52,15 @@ namespace Disc_Golf_Scorecard.ViewModels
         }
         public void subtractScore()
         {
-            shot.Score--;
-            shot.PlayerRound.TotalScore--; 
+            if (shot.Score > 0)
+            {
+                shot.Score--;
+                shot.PlayerRound.TotalScore--;
 
-            NotifyPropertyChanged("Score");
-            NotifyPropertyChanged("CumulativeScore");
-            db.SubmitChanges(); 
+                NotifyPropertyChanged("Score");
+                NotifyPropertyChanged("CumulativeScore");
+                db.SubmitChanges();
+            }
         }
 
     }
