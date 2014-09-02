@@ -6,6 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -30,6 +32,7 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
+                    <my:AdControl AdUnitId="188160" Margin="-13,505,-11,22" Background="Gray" x:Name="adControl4" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
                 </StackPanel>
             </phone:PanoramaItem>
 
@@ -46,6 +49,8 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
+                    <my:AdControl AdUnitId="188160" Margin="-13,505,-11,22" Background="Gray" x:Name="adContro2" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
+
                 </StackPanel>
             </phone:PanoramaItem>
 
@@ -62,6 +67,8 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
+                    <my:AdControl AdUnitId="188160" Margin="-13,505,-11,22" Background="Gray" x:Name="adContro3" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
+
                 </StackPanel>
             </phone:PanoramaItem>
 
