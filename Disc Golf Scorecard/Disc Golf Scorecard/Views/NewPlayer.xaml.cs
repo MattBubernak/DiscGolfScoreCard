@@ -14,7 +14,7 @@ namespace Disc_Golf_Scorecard.Views
 {
     public partial class NewPlayer : PhoneApplicationPage
     {
-        const string INVALID_NICKNAME_MESSAGE = "Please enter a valid nickname that is between 1 and 8 characters";
+        const string INVALID_NICKNAME_MESSAGE = "Please enter a valid nickname that is between 1 and 6 characters";
         const string INVALID_LASTNAME_MESSAGE = "Please enter a first name";
         const string INVALID_FIRSTNAME_MESSAGE ="Please enter a last name";
 
@@ -38,7 +38,7 @@ namespace Disc_Golf_Scorecard.Views
             //{
             //    Show_Error_Message(INVALID_NUMBER_MESSAGE);
             //}
-            if (NickNameBox.Text.ToString().Length > 8 || NickNameBox.Text.ToString().Length < 1)
+            if (NickNameBox.Text.ToString().Length > 6 || NickNameBox.Text.ToString().Length < 1)
             {
                 Show_Error_Message(INVALID_NICKNAME_MESSAGE);
             }

@@ -31,6 +31,14 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return playerRound.Player.NickName; }
         }
 
+        public string NickNameConc
+        {
+            get {
+                    return playerRound.Player.NickName.PadRight(6).Substring(0, 6); 
+                 }
+
+        }
+
         public int TotalScore
         {
             get { return playerRound.TotalScore; }

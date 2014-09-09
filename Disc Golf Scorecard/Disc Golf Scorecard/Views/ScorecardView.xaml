@@ -21,9 +21,8 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Disc Golf Scorecard" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding Name}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <StackPanel Grid.Row="0" Margin="12,17,0,10">
+            <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextNormalStyle}" Height="22"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -60,16 +59,19 @@
                     <ListBox  x:Name="PlayerLongListSelector" ItemsSource="{Binding playerRoundViewModels}" Width="332" >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"  Margin="30,0,0,0" ></StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="40,0,0,0" ></StackPanel>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding NickName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSmallStyle}">
+                            <TextBlock Text="{Binding NickNameConc}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSmallStyle}">
                                     <TextBlock.RenderTransform>
+                                            <TransformGroup>
                                         <CompositeTransform Rotation="90"/>
-                                    </TextBlock.RenderTransform>
+                                                <TranslateTransform X="20"/>
+                                            </TransformGroup>
+                                        </TextBlock.RenderTransform>
                                 </TextBlock>
                             </StackPanel>
                         </DataTemplate>
@@ -81,7 +83,7 @@
 
             </StackPanel>
 
-            <phone:LongListSelector  Height="420" ItemsSource="{Binding scorecardHoles}" x:Name="HoleLongListSelector" >
+            <phone:LongListSelector  Height="529" ItemsSource="{Binding scorecardHoles}" x:Name="HoleLongListSelector" >
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,0,0,17">

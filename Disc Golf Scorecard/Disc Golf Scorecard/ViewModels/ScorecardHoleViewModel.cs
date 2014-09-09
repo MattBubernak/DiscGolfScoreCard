@@ -45,11 +45,11 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get
             {
-                string ShotString = "";
-                ShotString += scorecardHole.HoleNumber + "          " + scorecardHole.Par + "          ";
+                string ShotString = scorecardHole.HoleNumber.ToString().PadRight(2);
+                ShotString += scorecardHole.Par.ToString().PadLeft(10) + " ".PadRight(11); 
                 foreach (ShotViewModel shot in shots)
                 {
-                    ShotString += shot.Score + "         ";
+                    ShotString += shot.Score.ToString().PadRight(12); 
                 }
                 return ShotString;
             }

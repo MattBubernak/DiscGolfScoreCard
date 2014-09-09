@@ -107,10 +107,10 @@ namespace Disc_Golf_Scorecard.ViewModels
                 string ShotString = "";
                
 
-                ShotString += "SUM" + "    " + Par + "          ";
+                ShotString += "SUM".PadRight(8) + Par.ToString() + " ".PadRight(9);
                 foreach (PlayerRoundViewModel player in playerRoundViewModels)
                 {
-                    ShotString += player.Total + "         ";
+                    ShotString += player.Total.ToString().PadRight(12);
                 }
                 return ShotString;
             }

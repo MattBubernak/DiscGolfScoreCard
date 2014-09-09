@@ -53,7 +53,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public void Create_Hole()
         {
-            DatabaseContext.Hole newHole = new DatabaseContext.Hole { HoleNumber = course.Holes.Count+1, _linkedCourseID = course.CourseID };
+            DatabaseContext.Hole newHole = new DatabaseContext.Hole { HoleNumber = course.Holes.Count+1, _linkedCourseID = course.CourseID , Par = 1};
             db.Holes.InsertOnSubmit(newHole);
             Debug.WriteLine(newHole.HoleNumber + "id: " + newHole.HoleID + "linked: " + newHole._linkedCourseID);
             Debug.WriteLine(course.CourseID);

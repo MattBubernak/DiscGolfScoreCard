@@ -40,7 +40,10 @@ namespace Disc_Golf_Scorecard.ViewModels
         }
         public string NickName
         {
-            get { return player.NickName; }
+            get 
+            { 
+                return player.NickName.PadRight(6); 
+            }
         }
 
         public string PlayerInfo
