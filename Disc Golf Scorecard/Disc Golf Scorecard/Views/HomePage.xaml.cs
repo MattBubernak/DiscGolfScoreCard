@@ -90,10 +90,25 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Add_Course(object sender, EventArgs e)
         {
+            if (HomePageViewModel.get_instance().courses.Count == 0)
+            {
+                Show_Error_Message("You must first create a course!");
+                return; 
+            }
+            if (HomePageViewModel.get_instance().players.Count == 0)
+            {
+                Show_Error_Message("You must first create a player!");
+                return; 
+            }
             CourseViewModel newCourse = HomePageViewModel.get_instance().create_course();
             int index = HomePageViewModel.get_instance().courses.IndexOf(newCourse);
             NavigationService.Navigate(new Uri("/Views/NewCourse.xaml?courseIndex=" + index, UriKind.Relative));
 
+        }
+
+        private void Show_Error_Message(string message)
+        {
+            MessageBoxResult result = MessageBox.Show(message, ERROR_MESSAGE_TITLE, MessageBoxButton.OK);
         }
 
         private void PlayerSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
