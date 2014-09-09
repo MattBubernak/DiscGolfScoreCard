@@ -22,7 +22,7 @@
             <!--Panorama item one-->
             <phone:PanoramaItem Header="Scorecards">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="ScorecardLongListSelector" Height="420" ItemsSource="{Binding scorecards}" SelectionChanged="ScorecardSelector_SelectionChanged">
+                    <phone:LongListSelector x:Name="ScorecardLongListSelector" Height="360" ItemsSource="{Binding scorecards}" SelectionChanged="ScorecardSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">
@@ -32,14 +32,14 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <my:AdControl AdUnitId="188160" Margin="-13,505,-11,22" Background="Gray" x:Name="adControl4" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
+                    <my:AdControl AdUnitId="188160" Background="Gray" x:Name="adContrlo2" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
                 </StackPanel>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Players">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="PlayerLongListSelector" Height="420" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
+                    <phone:LongListSelector x:Name="PlayerLongListSelector" Height="360" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">
@@ -49,15 +49,16 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <my:AdControl AdUnitId="188160" Margin="-13,505,-11,22" Background="Gray" x:Name="adContro2" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
+                    <my:AdControl AdUnitId="188160" Background="Gray" x:Name="adContro2" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
 
                 </StackPanel>
+                
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Courses">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="CourseLongListSelector" Height="420" ItemsSource="{Binding courses}" SelectionChanged="CourseSelector_SelectionChanged">
+                    <phone:LongListSelector x:Name="CourseLongListSelector" Height="360" ItemsSource="{Binding courses}" SelectionChanged="CourseSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">
@@ -67,7 +68,7 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <my:AdControl AdUnitId="188160" Margin="-13,505,-11,22" Background="Gray" x:Name="adContro3" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
+                    <my:AdControl AdUnitId="188160" Background="Gray" x:Name="adContro3" ApplicationId="78bc5fb3-b49a-4fc3-9cac-21f732c4642b" HorizontalAlignment="Center" Width="480" Height="80"  />
 
                 </StackPanel>
             </phone:PanoramaItem>
