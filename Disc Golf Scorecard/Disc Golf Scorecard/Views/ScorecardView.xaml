@@ -103,7 +103,7 @@
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
 
-            <TextBlock Text="{Binding TotalString}" Style="{StaticResource PhoneTextNormalStyle}">
+            <TextBlock Text="{Binding TotalString}" Style="{StaticResource PhoneTextAccentStyle}">
                
             </TextBlock>
 
