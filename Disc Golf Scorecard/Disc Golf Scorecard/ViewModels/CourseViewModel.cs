@@ -14,12 +14,15 @@ namespace Disc_Golf_Scorecard.ViewModels
     {
         public DatabaseContext.Course course;
         public ObservableCollection<HoleViewModel> holes { get; set; }
+        public ObservableCollection<ScorecardViewModel> scorecards { get; set; }
 
         public CourseViewModel(DatabaseContext.Course course)
         {
             this.course = course;
             this.db = App.DB;
             holes = new ObservableCollection<HoleViewModel>(from DatabaseContext.Hole instance in db.Holes where instance._linkedCourseID == course.CourseID select new HoleViewModel(instance));
+            scorecards = new ObservableCollection<ScorecardViewModel>(from DatabaseContext.Scorecard instance in db.Scorecards where instance._linkedCourseID == course.CourseID select new ScorecardViewModel(instance));
+            
         }
        
 
@@ -39,6 +42,15 @@ namespace Disc_Golf_Scorecard.ViewModels
                 }
                 return Par; 
             }
+        }
+
+        public int NumberTimesPlayed
+        {
+            get
+            {
+                return scorecards.Count; 
+            }
+
         }
 
         public string CourseName

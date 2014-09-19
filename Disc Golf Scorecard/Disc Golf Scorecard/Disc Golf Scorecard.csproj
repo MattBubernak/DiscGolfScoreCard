@@ -119,6 +119,9 @@
     <Compile Include="ViewModels\ScorecardHoleViewModel.cs" />
     <Compile Include="ViewModels\ScorecardViewModel.cs" />
     <Compile Include="ViewModels\ShotViewModel.cs" />
+    <Compile Include="Views\Course.xaml.cs">
+      <DependentUpon>Course.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <Page Include="Views\Course.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

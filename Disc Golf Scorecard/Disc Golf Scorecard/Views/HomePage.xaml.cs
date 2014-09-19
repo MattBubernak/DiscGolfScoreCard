@@ -124,7 +124,7 @@ namespace Disc_Golf_Scorecard.Views
         private void CourseSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CourseViewModel selectedCourse = CourseLongListSelector.SelectedItem as CourseViewModel;
-            NavigationService.Navigate(new Uri("/Views/NewCourse.xaml?courseIndex=" + HomePageViewModel.get_instance().courses.IndexOf(selectedCourse), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/Course.xaml?courseIndex=" + HomePageViewModel.get_instance().courses.IndexOf(selectedCourse), UriKind.Relative));
             CourseLongListSelector.SelectedItem = null;
 
         }
