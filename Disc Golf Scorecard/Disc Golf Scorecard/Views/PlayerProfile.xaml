@@ -29,13 +29,13 @@
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock>NickName:</TextBlock>
-            <TextBlock Text="{Binding NickName}"></TextBlock>
+            <TextBlock Text="{Binding NickName}" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
             <TextBlock>Phone Number:</TextBlock>
-            <TextBlock Text="{Binding Phone}"></TextBlock>
+            <TextBlock Text="{Binding Phone}" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
             <TextBlock>Email Addres:</TextBlock>
-            <TextBlock Text="{Binding Email}"></TextBlock>
+            <TextBlock Text="{Binding Email}" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
             <TextBlock>Rounds Played</TextBlock>
-            <TextBlock Text="{Binding Rounds}"></TextBlock>
+            <TextBlock Text="{Binding Rounds}" Style="{StaticResource PhoneTextAccentStyle}" ></TextBlock>
         </StackPanel>
     </Grid>
 
