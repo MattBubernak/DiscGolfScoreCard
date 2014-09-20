@@ -53,6 +53,27 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         }
 
+        public string CourseRecordString
+        {
+            get
+            {
+                double bestScore = 999999;
+                string bestPlayer = "yolo";
+                DateTime date = DateTime.Now; 
+                foreach (ScorecardViewModel scorecard in scorecards)
+                {
+                        if (scorecard.WinningScore < bestScore)
+                        {
+                            bestScore = scorecard.WinningScore;
+                            bestPlayer = scorecard.Winner;
+                            date = scorecard.Date; 
+                        }
+                }
+
+                return bestPlayer + " shot a " + bestScore + " on " + date; 
+            }
+        }
+
         public string CourseName
         {
             get { return course.CourseName; }

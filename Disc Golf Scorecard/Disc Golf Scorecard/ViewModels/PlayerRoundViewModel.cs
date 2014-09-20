@@ -30,7 +30,10 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return playerRound.Player.NickName; }
         }
-
+        public string FullName
+        {
+            get { return playerRound.Player.FirstName + " " + playerRound.Player.LastName; }
+        }
         public string NickNameConc
         {
             get {

@@ -100,6 +100,52 @@ namespace Disc_Golf_Scorecard.ViewModels
             }
         }
 
+        public string Winner
+        {
+            get
+            {
+                double bestScore = 9999;
+                string bestPlayer = ""; 
+
+                foreach (PlayerRoundViewModel round in playerRoundViewModels)
+                {
+                    if (round.TotalScore < bestScore)
+                    {
+                        bestScore = round.TotalScore;
+                        bestPlayer = round.FullName; 
+                    }
+                }
+                return bestPlayer; 
+            }
+        }
+
+        public DateTime Date
+        {
+            get
+            {
+                return Date;
+            }
+        }
+
+        public int WinningScore
+        {
+            get
+            {
+                int bestScore = 9999;
+                string bestPlayer = "";
+
+                foreach (PlayerRoundViewModel round in playerRoundViewModels)
+                {
+                    if (round.TotalScore < bestScore)
+                    {
+                        bestScore = round.TotalScore;
+                        bestPlayer = round.FullName;
+                    }
+                }
+                return bestScore; 
+            }
+        }
+
         public string TotalString
         {
             get

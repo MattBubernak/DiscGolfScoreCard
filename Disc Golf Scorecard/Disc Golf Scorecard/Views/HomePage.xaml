@@ -37,7 +37,7 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Players">
+            <phone:PanoramaItem Header="Players" Style="Color ">
                 <StackPanel>
                     <phone:LongListSelector x:Name="PlayerLongListSelector" Height="360" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
