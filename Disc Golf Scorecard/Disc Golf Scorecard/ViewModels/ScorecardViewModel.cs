@@ -123,7 +123,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get
             {
-                return Date;
+                return scorecard.ScorecardDate;
             }
         }
 
