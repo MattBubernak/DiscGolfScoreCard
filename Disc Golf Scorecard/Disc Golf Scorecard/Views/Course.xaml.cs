@@ -34,6 +34,12 @@ namespace Disc_Golf_Scorecard.Views
                     DataContext = HomePageViewModel.get_instance().courses[index];
                     courseViewModel = HomePageViewModel.get_instance().courses[index];
                 }
+                //update the properties of this view model... may not be the best place to do this, but yolo!
+                courseViewModel.NotifyPropertyChanged("NumberOfHoles");
+                courseViewModel.NotifyPropertyChanged("Par");
+                courseViewModel.NotifyPropertyChanged("NumberTimesPlayed");
+                courseViewModel.NotifyPropertyChanged("CourseRecordString");
+
             }
         }
 
