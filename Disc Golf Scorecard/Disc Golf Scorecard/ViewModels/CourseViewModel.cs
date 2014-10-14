@@ -57,6 +57,10 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get
             {
+                //confirm a scorecard exists for this course. 
+                if (scorecards.Count < 1)
+                    return "None. Get out there!";
+
                 double bestScore = double.MaxValue;
                 string bestPlayer = "yolo";
                 DateTime date = DateTime.Now; 

@@ -10,7 +10,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Landscape"
+    SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
@@ -33,7 +33,7 @@
             <TextBox x:Name="CourseNameBox" Text="{Binding CourseName}"></TextBox>
             <TextBlock Text="Number of Holes:"></TextBlock>
             <TextBlock Text="{Binding NumberOfHoles}"></TextBlock>
-            <Border Background="DarkSlateGray">
+            <Border Background="{StaticResource PhoneAccentBrush}">
                 <TextBlock Text="Hole           Par         "></TextBlock>
             </Border>
             <!--

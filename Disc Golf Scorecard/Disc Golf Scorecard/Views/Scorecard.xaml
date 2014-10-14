@@ -32,7 +32,7 @@
                     <StackPanel>
                         <TextBlock Text="{Binding ParString}" Style="{StaticResource PhoneTextLargeStyle}"></TextBlock>
 
-                        <Border Background="DarkSlateGray">
+                        <Border Background="{StaticResource PhoneAccentBrush}">
                             <TextBlock Text="Player                 Sum      Hole         "></TextBlock>
                         </Border>
                         
