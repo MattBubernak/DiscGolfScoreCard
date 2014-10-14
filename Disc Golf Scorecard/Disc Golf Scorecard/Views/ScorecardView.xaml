@@ -29,7 +29,7 @@
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="60">
-                <Border Background="DarkSlateGray">
+                <Border Background="{StaticResource PhoneAccentBrush}">
 
                     <TextBlock Text="      ">
                         <TextBlock.RenderTransform>
@@ -37,7 +37,7 @@
                         </TextBlock.RenderTransform>
                     </TextBlock>
                 </Border>
-                <Border Background="DarkSlateGray">
+                <Border Background="{StaticResource PhoneAccentBrush}">
 
                     <TextBlock Text="Hole #">
                         <TextBlock.RenderTransform>
@@ -45,7 +45,7 @@
                         </TextBlock.RenderTransform>
                     </TextBlock>
                 </Border>
-                <Border Background="DarkSlateGray">
+                <Border Background="{StaticResource PhoneAccentBrush}">
 
                     <TextBlock Text="Par">
                         <TextBlock.RenderTransform>
@@ -54,7 +54,7 @@
                     </TextBlock>
                 </Border>
 
-                <Border Background="DarkSlateGray">
+                <Border Background="{StaticResource PhoneAccentBrush}">
 
                     <ListBox  x:Name="PlayerLongListSelector" ItemsSource="{Binding playerRoundViewModels}" Width="332" >
                     <ListBox.ItemsPanel>
