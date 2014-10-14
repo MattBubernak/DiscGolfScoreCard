@@ -26,6 +26,7 @@
                     <ContentControl Content="{Binding HoleString}" />
                 </DataTemplate>
             </phone:Pivot.HeaderTemplate>
+            
             <phone:Pivot.ItemTemplate>
                 <DataTemplate>
                     <!--<ContentControl Content="{Binding Par}" />-->
@@ -33,9 +34,8 @@
                         <TextBlock Text="{Binding ParString}" Style="{StaticResource PhoneTextLargeStyle}"></TextBlock>
 
                         <Border Background="{StaticResource PhoneAccentBrush}">
-                            <TextBlock Text="Player               Sum      Hole         "></TextBlock>
+                            <TextBlock Text="Player             Sum      Hole         "></TextBlock>
                         </Border>
-                        
                         <phone:LongListSelector  Height="420" ItemsSource="{Binding shots}" x:Name="HoleLongListSelector" >
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
@@ -52,9 +52,9 @@
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
 
                                         </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column ="0" Text="{Binding NickName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                            <TextBlock Grid.Column ="1" Text="{Binding CumulativeScore}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
-                                            <TextBlock Grid.Column ="2" Text="{Binding ScoreWithParDiff}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
+                                            <TextBlock Grid.Column ="0" Text="{Binding NickName}" TextWrapping="Wrap" FontSize="30"/>
+                                        <TextBlock Grid.Column ="1" Text="{Binding CumulativeScore}" TextWrapping="Wrap" FontSize="30"  />
+                                        <TextBlock Grid.Column ="2" Text="{Binding ScoreWithParDiff}" TextWrapping="Wrap" FontSize="30" />
                                             <Button Grid.Column ="3" Click="add">+</Button>
                                             <Button Grid.Column ="4" Click="subtract">-</Button>
 
