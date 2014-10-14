@@ -70,6 +70,7 @@ namespace Disc_Golf_Scorecard.ViewModels
                     newShot._linkedScorecardHoleID = scorecard.ScorecardID;
                     newShot.HoleNumber = hole.HoleNumber;
                     newShot.Par = hole.Par;
+                    newShot.Score = 1; 
                     newShot.parentScorecardHole = hole.scorecardHole;
                     newShot.PlayerRound = playerRound.playerRound;
 
@@ -166,7 +167,7 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return scorecard.Course.CourseName; }
         }
-
+   
         public void NotifyPropertyChangedAllHoles()
         {
             foreach (PlayerRoundViewModel playerRound in playerRoundViewModels)

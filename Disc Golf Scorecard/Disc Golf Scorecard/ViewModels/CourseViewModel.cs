@@ -84,6 +84,16 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return course.CourseName; }
         }
 
+        public void NotifyProperties()
+        {
+            scorecards = new ObservableCollection<ScorecardViewModel>(from DatabaseContext.Scorecard instance in db.Scorecards where instance._linkedCourseID == course.CourseID select new ScorecardViewModel(instance));
+
+            NotifyPropertyChanged("NumberOfHoles");
+            NotifyPropertyChanged("Par");
+            NotifyPropertyChanged("NumberTimesPlayed");
+            NotifyPropertyChanged("CourseRecordString");
+        }
+
         public string CourseInfo
         {
             get { return NumberOfHoles + " holes" + ", Par " + Par; }
