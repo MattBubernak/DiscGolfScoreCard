@@ -12,7 +12,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait"  Orientation="Landscape"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -33,7 +33,7 @@
                         <TextBlock Text="{Binding ParString}" Style="{StaticResource PhoneTextLargeStyle}"></TextBlock>
 
                         <Border Background="{StaticResource PhoneAccentBrush}">
-                            <TextBlock Text="Player                 Sum      Hole         "></TextBlock>
+                            <TextBlock Text="Player               Sum      Hole         "></TextBlock>
                         </Border>
                         
                         <phone:LongListSelector  Height="420" ItemsSource="{Binding shots}" x:Name="HoleLongListSelector" >
@@ -45,16 +45,16 @@
                                                 <RowDefinition Height="auto"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="150"></ColumnDefinition>
-                                                <ColumnDefinition Width="75"></ColumnDefinition>
-                                                <ColumnDefinition Width="75"></ColumnDefinition>
+                                                <ColumnDefinition Width="130"></ColumnDefinition>
+                                                <ColumnDefinition Width="65"></ColumnDefinition>
+                                                <ColumnDefinition Width="105"></ColumnDefinition>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
 
                                         </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column ="0" Text="{Binding NickName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                             <TextBlock Grid.Column ="1" Text="{Binding CumulativeScore}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
-                                            <TextBlock Grid.Column ="2" Text="{Binding Score}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
+                                            <TextBlock Grid.Column ="2" Text="{Binding ScoreWithParDiff}" TextWrapping="Wrap"  Style="{StaticResource PhoneTextLargeStyle}" />
                                             <Button Grid.Column ="3" Click="add">+</Button>
                                             <Button Grid.Column ="4" Click="subtract">-</Button>
 

@@ -77,26 +77,29 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="About" HeaderTemplate="{StaticResource HeaderTemp}">
-              
-                <StackPanel Background="Black">
+                <ScrollViewer>
+
+                    <StackPanel Background="Black">
 
 
                     <TextBlock>Author: BirdBucket Productions</TextBlock>
                     <TextBlock>Version: BETA .03</TextBlock>
                     <Button Click="send_email"> Report bugs and suggest features</Button>
                     <Image Height="100" Width="100" Source="/Images/bblogo.png"></Image>
-                    <TextBlock>Check out other apps by BirdBucket Productions</TextBlock>
+                      
+                        <TextBlock>View more apps by BirdBucket Productions</TextBlock>
                     <TextBlock Foreground="{StaticResource PhoneAccentBrush}">Workout Log</TextBlock>
                     <Button Click="WorkouLogClick">
                         <Image Source="/Images/WorkoutLog.png"></Image>
                     </Button>
-                    <TextBlock Foreground="{StaticResource PhoneAccentBrush}">Workout Log</TextBlock>
+                        <TextBlock Foreground="{StaticResource PhoneAccentBrush}">14ers Checklist</TextBlock>
                     <Button Click="ChecklistClick">
                         <Image Source="/Images/14ersChecklist.png"></Image>
                     </Button>
                 </StackPanel>
+                </ScrollViewer>
+
             </phone:PanoramaItem>
-            
         </phone:Panorama>
     </Grid>
 

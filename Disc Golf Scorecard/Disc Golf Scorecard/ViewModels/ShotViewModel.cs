@@ -26,6 +26,17 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get { return shot.Score; }
         }
+        public string ScoreWithParDiff
+        {
+            get 
+            {
+                if (shot.Score > shot.Par)
+                    return shot.Score + "(+" + (shot.Score - shot.Par) + ")"; 
+                else if (shot.Score < shot.Par)
+                    return shot.Score + "(" + (shot.Score - shot.Par) + ")";
+                return shot.Score.ToString(); 
+            }
+        }
         public int CumulativeScore
         {
             get
@@ -46,6 +57,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
             Debug.WriteLine("Increased the score of this shot id: " + shot.ShotID);
             NotifyPropertyChanged("Score");
+            NotifyPropertyChanged("ScoreWithParDiff");
             NotifyPropertyChanged("CumulativeScore");
             
             db.SubmitChanges(); 
@@ -58,6 +70,7 @@ namespace Disc_Golf_Scorecard.ViewModels
                 shot.PlayerRound.TotalScore--;
 
                 NotifyPropertyChanged("Score");
+                NotifyPropertyChanged("ScoreWithParDiff");
                 NotifyPropertyChanged("CumulativeScore");
                 db.SubmitChanges();
             }
