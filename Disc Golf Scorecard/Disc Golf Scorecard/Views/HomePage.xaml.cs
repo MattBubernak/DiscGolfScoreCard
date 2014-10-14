@@ -146,7 +146,7 @@ namespace Disc_Golf_Scorecard.Views
         private void WorkouLogClick(object sender, RoutedEventArgs e)
         {
             WebBrowserTask wbt = new WebBrowserTask();
-            wbt.Uri = new Uri("http://windowsphone.com/s?appId=13eaa3c9-f171-4f01-83ca-2d8c91940573", UriKind.Absolute);
+            wbt.Uri = new Uri("http://windowsphone.com/s?appId=af613996-0f12-4a60-ab60-7c3d6f53f975", UriKind.Absolute);
             wbt.Show();
         }
 
