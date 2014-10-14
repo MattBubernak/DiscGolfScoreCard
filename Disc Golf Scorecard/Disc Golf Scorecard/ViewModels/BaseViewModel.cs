@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Disc_Golf_Scorecard.Models;
+using System.Diagnostics;
 
 namespace Disc_Golf_Scorecard.ViewModels
 {

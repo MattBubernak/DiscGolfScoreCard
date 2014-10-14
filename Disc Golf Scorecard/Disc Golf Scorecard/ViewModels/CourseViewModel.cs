@@ -57,11 +57,12 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             get
             {
-                double bestScore = 999999;
+                double bestScore = double.MaxValue;
                 string bestPlayer = "yolo";
                 DateTime date = DateTime.Now; 
                 foreach (ScorecardViewModel scorecard in scorecards)
                 {
+                        Debug.WriteLine("checking scorecard:" + scorecard.Date);
                         if (scorecard.WinningScore < bestScore)
                         {
                             bestScore = scorecard.WinningScore;
