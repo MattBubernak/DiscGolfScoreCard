@@ -235,6 +235,7 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\14ersChecklist.png" />
     <Content Include="Images\add.png" />
     <Content Include="Images\back.png" />
     <Content Include="Images\basecircle.png" />
@@ -274,6 +275,7 @@
     <Content Include="Images\transport.play.png" />
     <Content Include="Images\transport.rew.png" />
     <Content Include="Images\upload.png" />
+    <Content Include="Images\WorkoutLog.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

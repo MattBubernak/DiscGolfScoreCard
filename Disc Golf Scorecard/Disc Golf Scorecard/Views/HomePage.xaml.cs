@@ -143,6 +143,20 @@ namespace Disc_Golf_Scorecard.Views
             task.Show();
         }
 
+        private void WorkouLogClick(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask wbt = new WebBrowserTask();
+            wbt.Uri = new Uri("http://windowsphone.com/s?appId=13eaa3c9-f171-4f01-83ca-2d8c91940573", UriKind.Absolute);
+            wbt.Show();
+        }
+
+        private void ChecklistClick(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask wbt = new WebBrowserTask();
+            wbt.Uri = new Uri("http://windowsphone.com/s?appId=98c24141-db18-4b20-838b-23f95ba62b8a", UriKind.Absolute);
+            wbt.Show();
+        }
+
 
 
 

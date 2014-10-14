@@ -8,6 +8,13 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:Disc_Golf_Scorecard" x:Key="LocalizedStrings"/>
+        <DataTemplate x:Key="HeaderTemp">
+            <Grid>
+                <ContentPresenter>
+                    <TextBlock Text="{Binding}" Foreground="{StaticResource PhoneAccentBrush}" />
+                </ContentPresenter>
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
@@ -16,5 +23,8 @@
             Launching="Application_Launching" Closing="Application_Closing"
             Activated="Application_Activated" Deactivated="Application_Deactivated"/>
     </Application.ApplicationLifetimeObjects>
+
+
+
 
 </Application>

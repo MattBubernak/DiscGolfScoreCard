@@ -15,12 +15,14 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
 
+
+    
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <phone:Panorama x:Name="panoramaControl" Title="Disc Golf Scorecard" SelectionChanged="PanoramaSelectionChanged">
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="Scorecards">
+            <phone:PanoramaItem Header="Scorecards" HeaderTemplate="{StaticResource HeaderTemp}">
                 <StackPanel>
                     <phone:LongListSelector x:Name="ScorecardLongListSelector" Height="360" ItemsSource="{Binding scorecards}" SelectionChanged="ScorecardSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
@@ -37,7 +39,7 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Players" >
+            <phone:PanoramaItem Header="Players" HeaderTemplate="{StaticResource HeaderTemp}">
                 <StackPanel>
                     <phone:LongListSelector x:Name="PlayerLongListSelector" Height="360" ItemsSource="{Binding players}" SelectionChanged="PlayerSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
@@ -56,7 +58,7 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Courses">
+            <phone:PanoramaItem Header="Courses" HeaderTemplate="{StaticResource HeaderTemp}">
                 <StackPanel>
                     <phone:LongListSelector x:Name="CourseLongListSelector" Height="360" ItemsSource="{Binding courses}" SelectionChanged="CourseSelector_SelectionChanged">
                         <phone:LongListSelector.ItemTemplate>
@@ -74,16 +76,24 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="About">
+            <phone:PanoramaItem Header="About" HeaderTemplate="{StaticResource HeaderTemp}">
+              
                 <StackPanel Background="Black">
 
 
                     <TextBlock>Author: BirdBucket Productions</TextBlock>
-                    <TextBlock>Version: BETA</TextBlock>
+                    <TextBlock>Version: BETA .03</TextBlock>
                     <Button Click="send_email"> Report bugs and suggest features</Button>
                     <Image Height="100" Width="100" Source="/Images/bblogo.png"></Image>
-
-
+                    <TextBlock>Check out other apps by BirdBucket Productions</TextBlock>
+                    <TextBlock Foreground="{StaticResource PhoneAccentBrush}">Workout Log</TextBlock>
+                    <Button Click="WorkouLogClick">
+                        <Image Source="/Images/WorkoutLog.png"></Image>
+                    </Button>
+                    <TextBlock Foreground="{StaticResource PhoneAccentBrush}">Workout Log</TextBlock>
+                    <Button Click="ChecklistClick">
+                        <Image Source="/Images/14ersChecklist.png"></Image>
+                    </Button>
                 </StackPanel>
             </phone:PanoramaItem>
             
