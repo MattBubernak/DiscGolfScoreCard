@@ -16,13 +16,15 @@ namespace Disc_Golf_Scorecard.ViewModels
         public ObservableCollection<HoleViewModel> holes { get; set; }
         public ObservableCollection<ScorecardViewModel> scorecards { get; set; }
 
+        public PlayerCourseAnalytic playerCourseAnalytic; 
+
         public CourseViewModel(DatabaseContext.Course course)
         {
             this.course = course;
             this.db = App.DB;
             holes = new ObservableCollection<HoleViewModel>(from DatabaseContext.Hole instance in db.Holes where instance._linkedCourseID == course.CourseID select new HoleViewModel(instance));
             scorecards = new ObservableCollection<ScorecardViewModel>(from DatabaseContext.Scorecard instance in db.Scorecards where instance._linkedCourseID == course.CourseID select new ScorecardViewModel(instance));
-            
+            playerCourseAnalytic = new PlayerCourseAnalytic(); 
         }
        
 
@@ -74,8 +76,14 @@ namespace Disc_Golf_Scorecard.ViewModels
                             date = scorecard.Date; 
                         }
                 }
-
-                return bestPlayer + " shot a " + bestScore + " on " + date; 
+                string diff;
+                if (bestScore > Par)
+                    diff = "+" + (bestScore - Par).ToString();
+                else if (bestScore < Par)
+                    diff = (bestScore - Par).ToString();
+                else
+                    diff = "par"; 
+                return bestPlayer + " shot a " + bestScore + "(" + diff + ")" + " on " + date.ToShortDateString(); 
             }
         }
 
@@ -84,14 +92,32 @@ namespace Disc_Golf_Scorecard.ViewModels
             get { return course.CourseName; }
         }
 
+        public int selectedPlayerAverage
+        {
+            get { return playerCourseAnalytic.averageScore; }
+        }
+        public int selectedPlayerTimesPlayed
+        {
+            get { return playerCourseAnalytic.timesPlayed; }
+        }
+        public int selectedPlayerBest
+        {
+            get { return playerCourseAnalytic.bestScore; }
+        }
+
         public void NotifyProperties()
         {
+            playerCourseAnalytic.refresh(); 
             scorecards = new ObservableCollection<ScorecardViewModel>(from DatabaseContext.Scorecard instance in db.Scorecards where instance._linkedCourseID == course.CourseID select new ScorecardViewModel(instance));
 
             NotifyPropertyChanged("NumberOfHoles");
             NotifyPropertyChanged("Par");
             NotifyPropertyChanged("NumberTimesPlayed");
             NotifyPropertyChanged("CourseRecordString");
+            NotifyPropertyChanged("selectedPlayerTimesPlayed");
+            NotifyPropertyChanged("selectedPlayerAverage");
+            NotifyPropertyChanged("selectedPlayerBest");
+
         }
 
         public string CourseInfo
@@ -128,6 +154,11 @@ namespace Disc_Golf_Scorecard.ViewModels
         {
             course.CourseName = CourseName;
             db.SubmitChanges();
+        }
+
+        public void update_analytic(PlayerViewModel player)
+        {
+            playerCourseAnalytic = new PlayerCourseAnalytic(player,this);
         }
 
 

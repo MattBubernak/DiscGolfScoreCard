@@ -56,7 +56,8 @@ namespace Disc_Golf_Scorecard.ViewModels
             newPlayerRound._linkedScorecardID = scorecard.ScorecardID; 
             db.PlayerRounds.InsertOnSubmit(newPlayerRound); 
             db.SubmitChanges();
-            playerRoundViewModels.Add(new PlayerRoundViewModel(newPlayerRound)); 
+            playerRoundViewModels.Add(new PlayerRoundViewModel(newPlayerRound));
+            playerViewModel.player.PlayerRounds.Add(newPlayerRound);
         }
 
         public void Create_Shots()
@@ -70,12 +71,10 @@ namespace Disc_Golf_Scorecard.ViewModels
                     newShot._linkedScorecardHoleID = scorecard.ScorecardID;
                     newShot.HoleNumber = hole.HoleNumber;
                     newShot.Par = hole.Par;
-                    newShot.Score = 1; 
                     newShot.parentScorecardHole = hole.scorecardHole;
                     newShot.PlayerRound = playerRound.playerRound;
-
                     db.Shots.InsertOnSubmit(newShot);
-                    playerRound.playerRound.Shots.Add(newShot); 
+                    playerRound.playerRound.Shots.Add(newShot);
                     db.SubmitChanges();
                     ShotViewModel newShotViewModel = new ShotViewModel(newShot);
                     playerRound.shots.Add(newShotViewModel);

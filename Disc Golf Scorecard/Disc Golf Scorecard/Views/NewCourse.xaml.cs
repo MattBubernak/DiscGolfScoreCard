@@ -26,6 +26,8 @@ namespace Disc_Golf_Scorecard.Views
         private void Add_Hole(object sender, EventArgs e)
         {
             courseViewModel.Create_Hole();
+            courseViewModel.NotifyPropertyChanged("Par");
+
         }
        
 
@@ -59,6 +61,7 @@ namespace Disc_Golf_Scorecard.Views
         {
             HoleViewModel clicked = ((sender as Button).DataContext as HoleViewModel);
             clicked.addPar();
+            courseViewModel.NotifyPropertyChanged("Par");
 
         }
 
@@ -66,6 +69,7 @@ namespace Disc_Golf_Scorecard.Views
         {
             HoleViewModel clicked = ((sender as Button).DataContext as HoleViewModel);
             clicked.minusPar();
+            courseViewModel.NotifyPropertyChanged("Par");
 
         }
 
@@ -86,7 +90,9 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Remove_Hole(object sender, EventArgs e)
         {
-            courseViewModel.remove_hole(); 
+            courseViewModel.remove_hole();
+            courseViewModel.NotifyPropertyChanged("Par");
+
         }
 
 

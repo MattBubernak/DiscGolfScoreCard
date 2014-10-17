@@ -83,7 +83,7 @@
 
 
                     <TextBlock>Author: BirdBucket Productions</TextBlock>
-                    <TextBlock>Version: BETA .03</TextBlock>
+                    <TextBlock>Version: BETA .05</TextBlock>
                     <Button Click="send_email"> Report bugs and suggest features</Button>
                     <Image Height="100" Width="100" Source="/Images/bblogo.png"></Image>
                       

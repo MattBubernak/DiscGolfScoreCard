@@ -20,6 +20,9 @@ namespace Disc_Golf_Scorecard.Views
         {
             InitializeComponent();
             DataContext = null;
+            //load up the player selection 
+            PlayerSelection.ItemsSource = HomePageViewModel.get_instance().players;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -29,7 +32,7 @@ namespace Disc_Golf_Scorecard.Views
                 string selectedIndex = "";
                 if (NavigationContext.QueryString.TryGetValue("courseIndex", out selectedIndex))
                 {
-
+                    Debug.WriteLine("recieved a course index...");
                     int index = int.Parse(selectedIndex);
                     DataContext = HomePageViewModel.get_instance().courses[index];
                     courseViewModel = HomePageViewModel.get_instance().courses[index];
@@ -45,6 +48,19 @@ namespace Disc_Golf_Scorecard.Views
         {
             NavigationService.Navigate(new Uri("/Views/NewCourse.xaml?courseIndex=" + HomePageViewModel.get_instance().courses.IndexOf(courseViewModel), UriKind.Relative));
 
+        }
+
+        private void UpdateAnalytic(object sender, SelectionChangedEventArgs e)
+        {
+            //Debug.WriteLine(selectedPlayer.NickName);
+            if (courseViewModel == null)
+            {
+                Debug.WriteLine("course view model is null");
+                return;
+            }
+            if (PlayerSelection.SelectedItem != null)
+                courseViewModel.update_analytic(PlayerSelection.SelectedItem as PlayerViewModel);
+            courseViewModel.NotifyProperties();
         }
 
 

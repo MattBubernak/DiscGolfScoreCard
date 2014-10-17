@@ -23,7 +23,7 @@ namespace Disc_Golf_Scorecard.ViewModels
 
             this.playerRound = playerRound;
             shots = new ObservableCollection<ShotViewModel>(from DatabaseContext.Shot shot in db.Shots where shot._linkedPlayerRoundID == playerRound.PlayerRoundID select new ShotViewModel(shot));
-
+           
         }
 
         public string NickName
@@ -44,7 +44,16 @@ namespace Disc_Golf_Scorecard.ViewModels
 
         public int TotalScore
         {
-            get { return playerRound.TotalScore; }
+            get
+            {
+                int total = 0;
+                foreach (ShotViewModel shot in shots)
+                {
+                    total += shot.Score;
+                }
+                return total;
+
+            }
         }
 
         public int Total

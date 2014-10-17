@@ -38,6 +38,7 @@ namespace Disc_Golf_Scorecard.Views
 
         private void Save_Scorecard(object sender, EventArgs e)
         {
+            HomePageViewModel.get_instance().NotifyPropertyChanged("players");
             NavigationService.Navigate(new Uri("/Views/HomePage.xaml", UriKind.Relative));
         }
 
