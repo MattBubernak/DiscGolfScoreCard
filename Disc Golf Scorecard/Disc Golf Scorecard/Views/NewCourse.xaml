@@ -35,7 +35,7 @@
                 <TextBox x:Name="CourseNameBox" Text="{Binding CourseName}" Margin="0,26,0,-26"/>
                 <TextBlock Text="Number of Holes:                Par:" Margin="0,84,0,-84"></TextBlock>
                 <TextBlock Text="{Binding NumberOfHoles}" Margin="162,87,0,-74" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
-                <TextBlock Text="{Binding Par}" Margin="287,85,0,-74" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
+                <TextBlock Text="{Binding Par}" Margin="287,87,0,-74" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
 
             </Grid>
             <Border Background="{StaticResource PhoneAccentBrush}">
